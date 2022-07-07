@@ -1,0 +1,8 @@
+@mixin columns($width, $justify) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $justify;
+  > * {
+    flex-basis: $width;
+  }
+}

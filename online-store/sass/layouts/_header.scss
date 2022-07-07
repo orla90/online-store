@@ -1,0 +1,39 @@
+.header {
+  background: $color-black;
+  border-radius: 0 0 20px 20px;
+  border-bottom: 2px solid $color-white;
+  height: 50px;
+  padding: 10px 0;
+}
+
+.header__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.header__logo-wrapper {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    display: block;
+    margin: auto;
+    background-image: url(../src/assets/media/tree.svg);
+    width: 48px;
+    height: 48px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+}
+
+.logo:hover {
+  @extend %transition;
+  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
+    brightness(93%) contrast(88%);
+}

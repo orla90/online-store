@@ -1,0 +1,18 @@
+.store-content__sort-window {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  background-color: $color-white;
+  border: 1px solid $color-grey;
+  border-radius: 4px;
+  cursor: default;
+  min-height: 38px;
+}
+
+select#sort {
+  width: 100%;
+  min-height: 38px;
+  cursor: pointer;
+}

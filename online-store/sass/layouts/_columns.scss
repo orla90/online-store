@@ -1,0 +1,10 @@
+.layout-3-column {
+  @include columns($width: 32%, $justify: space-between);
+  margin: 20px 0 30px;
+  width: 100%;
+}
+
+.layout-5-column {
+  @include columns($width: 18%, $justify: space-around);
+  gap: 20px;
+}

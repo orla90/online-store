@@ -1,0 +1,24 @@
+@import "../node_modules/normalize-scss/sass/normalize";
+
+//Abstract
+@import "abstract/constants";
+@import "abstract/placeholders";
+@import "abstract/mixins";
+
+//Base
+@import "base/base";
+@import "base/buttons";
+@import "base/inputs";
+
+//Layouts
+@import "layouts/wrapper";
+@import "layouts/header";
+@import "layouts/columns";
+@import "layouts/footer";
+
+//Components
+@import "components/basket";
+@import "components/filters";
+@import "components/card";
+@import "components/search";
+@import "components/sort";

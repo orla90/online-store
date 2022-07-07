@@ -1,0 +1,81 @@
+.button {
+  font-family: "Roboto", Verdana, sans-serif;
+  font-size: 16px;
+  height: 40px;
+  cursor: pointer;
+  &:hover {
+    @extend %transition;
+    color: $color-cyan;
+  }
+}
+
+.button_manufacturer,
+.samsung-img {
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 10px 7px;
+  background-color: transparent;
+  border: 0;
+  background-position: center;
+  &.samsung {
+    background-image: url(../src/assets/media/samsung.svg);
+  }
+  &.apple {
+    background-image: url(../src/assets/media/apple.svg);
+  }
+  &.xiaomi {
+    background-image: url(../src/assets/media/xiaomi.svg);
+  }
+  &:hover {
+    filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
+      brightness(93%) contrast(88%);
+  }
+}
+
+.button_camera {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 2px solid;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 40px;
+  margin: 10px 7px;
+  outline: 0;
+  position: relative;
+  width: 40px;
+  color: $color-white;
+}
+
+.button_color {
+  border: 0;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  margin: 15px 10px;
+  &.white {
+    background-color: $color-white;
+  }
+  &.yellow {
+    background-color: $color-yellow;
+  }
+  &.red {
+    background-color: $color-red;
+  }
+}
+
+.button_reset {
+  height: 40px;
+  background-color: rgba(19, 20, 21, 0.3);
+  backdrop-filter: blur(3px);
+  border: 1px solid $color-cyan;
+  border-radius: 20px;
+  color: $color-white;
+  margin: 10px 0;
+  padding: 0 25px;
+  &:hover {
+    opacity: 0.8;
+  }
+}

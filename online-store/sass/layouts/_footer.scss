@@ -1,0 +1,38 @@
+.footer {
+  margin-top: 100px;
+  background: $color-black;
+  margin-top: 100px;
+  padding: 10px 20px;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.git-logo {
+  background: url(../src/assets/media/github.svg) no-repeat;
+  background-size: contain;
+  display: flex;
+  height: 23px;
+  width: 23px;
+  &:hover {
+    @extend %transition;
+    filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
+      brightness(93%) contrast(88%);
+  }
+}
+
+.rss-logo {
+  background: url(../src/assets/media/logo_rss.svg) no-repeat;
+  height: 23px;
+  width: 61px;
+  background-size: contain;
+  display: flex;
+  &:hover {
+    @extend %transition;
+    filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
+      brightness(93%) contrast(88%);
+  }
+}

@@ -5,52 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phone online store</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../sass/style.css" />
   </head>
   <body>
     <header class="header">
-      <div class="wrapper">
-        <a href="#" class="logo"></a>
-        <h1>Online Store</h1>
+      <div class="wrapper header__wrapper">
+        <div class="header__logo-wrapper">
+          <a href="#" class="logo"></a>
+          <h1>Online Store</h1>
+        </div>
         <div class="basket">
           <span class="basket__quantity"></span>
         </div>
       </div>
     </header>
-    <main>
-      <div class="wrapper">
+    <main class="main">
+      <div class="wrapper main__wrapper">
         <div class="store-content">
-          <div class="store-content__filter">
+          <div class="layout-3-column">
             <div class="store-content__filter-group">
-              <h3>Фильтры по значению</h3>
+              <h3 class="store-content__filter-title">Фильтры по значению</h3>
               <div class="store-content__manufacturer-filter">
-                <span>Производитель</span>
+                <span>Производитель:</span>
                 <ul class="manufacturer-list">
-                  <button class="button samsung"></button>
-                  <button class="button apple"></button>
-                  <button class="button xiaomi"></button>
+                  <button class="button button_manufacturer samsung"></button>
+                  <button class="button button_manufacturer apple"></button>
+                  <button class="button button_manufacturer xiaomi"></button>
                 </ul>
               </div>
               <div class="store-content__camera-filter">
-                <span>Количество камер</span>
+                <span>Количество камер:</span>
                 <ul class="camera-amount">
-                  <button class="button single-camera"></button>
-                  <button class="button two-camera"></button>
-                  <button class="button three-camera"></button>
+                  <button class="button button_camera single-camera">3</button>
+                  <button class="button button_camera two-camera">2</button>
+                  <button class="button button_camera three-camera">1</button>
                 </ul>
               </div>
               <div class="store-content__color-filter">
-                <span>Цвет</span>
+                <span>Цвет:</span>
                 <ul class="colors">
-                  <button class="button white"></button>
-                  <button class="button yellow"></button>
-                  <button class="button red"></button>
+                  <button class="button button_color white"></button>
+                  <button class="button button_color yellow"></button>
+                  <button class="button button_color red"></button>
                 </ul>
               </div>
               <div class="store-content__popular-filter">
-                <span>Только популярные</span>
+                <span>Только популярные:</span>
                 <div>
-                  <label for="popular-input"></label>
+                  <label for="popular-input" class="popular-label"></label>
                   <input
                     type="checkbox"
                     name="popular-input"
@@ -60,9 +68,11 @@
               </div>
             </div>
             <div class="store-content__filter-group">
-              <h3>Фильтры по диапазону</h3>
+              <h3 class="store-content__filter-title">Фильтры по диапазону</h3>
               <div class="store-content__range">
-                <h4>Количество на складе:</h4>
+                <h4 class="store-content__filter-subtitle">
+                  Количество на складе:
+                </h4>
                 <div class="store-content__range-slider">
                   <div class="store-content__range-numbers">1</div>
                   <span class="store-content__range-track"></span>
@@ -70,7 +80,9 @@
                 </div>
               </div>
               <div class="store-content__range">
-                <h4>Год выхода на рынок:</h4>
+                <h4 class="store-content__filter-subtitle">
+                  Год выхода на рынок:
+                </h4>
                 <div class="store-content__range-slider">
                   <div class="store-content__range-numbers">2000</div>
                   <span class="store-content__range-track"></span>
@@ -80,7 +92,7 @@
             </div>
             <div class="store-content__filter-group">
               <div class="store-content__search">
-                <h4>Поиск</h4>
+                <h3 class="store-content__filter-title">Поиск</h3>
                 <div class="store-content__search-window">
                   <input
                     type="text"
@@ -91,35 +103,37 @@
                 </div>
               </div>
               <div class="store-content__sort">
-                <h4>Сортировка</h4>
+                <h3 class="store-content__filter-title">Сортировка</h3>
                 <div class="store-content__sort-window">
-                  <form>
-                    <select name="sort" id="sort">
-                      <optgroup label="По названию">
-                        <option value="sort-by-name">от А до Я</option>
-                        <option value="sort-by-name">от Я до А</option>
-                      </optgroup>
-                      <optgroup label="По году">
-                        <option value="ascending-year">По возрастанию</option>
-                        <option value="descending-year">По убыванию</option>
-                      </optgroup>
-                      <optgroup label="По Количеству">
-                        <option value="ascending-amount">По возрастанию</option>
-                        <option value="descending-amount">По убыванию</option>
-                      </optgroup>
-                    </select>
-                  </form>
+                  <select name="sort" id="sort">
+                    <optgroup label="По названию">
+                      <option value="sort-by-name">от А до Я</option>
+                      <option value="sort-by-name">от Я до А</option>
+                    </optgroup>
+                    <optgroup label="По году">
+                      <option value="ascending-year">По возрастанию</option>
+                      <option value="descending-year">По убыванию</option>
+                    </optgroup>
+                    <optgroup label="По Количеству">
+                      <option value="ascending-amount">По возрастанию</option>
+                      <option value="descending-amount">По убыванию</option>
+                    </optgroup>
+                  </select>
                 </div>
               </div>
               <div class="store-content__reset">
-                <button>Сброс фильтров</button>
-                <button>Сброс настроек</button>
+                <button class="button button_reset filters">
+                  Сброс фильтров
+                </button>
+                <button class="button button_reset settings">
+                  Сброс настроек
+                </button>
               </div>
             </div>
           </div>
-          <div class="store-content__items">
+          <div class="layout-5-column">
             <div class="store-content__item">
-              <h3>Xiaomi Redmi Note 11</h3>
+              <h3 class="store-content__title">Xiaomi Redmi Note 11</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/5.png"
@@ -137,7 +151,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Xiaomi Redmi 9C 3/64gb</h3>
+              <h3 class="store-content__title">Xiaomi Redmi 9C 3/64gb</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/6.png"
@@ -155,7 +169,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Xiaomi Poco X4 pro</h3>
+              <h3 class="store-content__title">Xiaomi Poco X4 pro</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/4.png"
@@ -173,7 +187,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Samsung Galaxy S21</h3>
+              <h3 class="store-content__title">Samsung Galaxy S21</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/1.png"
@@ -191,7 +205,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Samsung Galaxy S20</h3>
+              <h3 class="store-content__title">Samsung Galaxy S20</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/3.png"
@@ -209,7 +223,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Samsung Galaxy A03</h3>
+              <h3 class="store-content__title">Samsung Galaxy A03</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/2.png"
@@ -227,7 +241,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Apple iPhone SE</h3>
+              <h3 class="store-content__title">Apple iPhone SE</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/10.png"
@@ -245,7 +259,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Apple iPhone 13</h3>
+              <h3 class="store-content__title">Apple iPhone 13</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/8.png"
@@ -263,7 +277,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Apple iPhone 12</h3>
+              <h3 class="store-content__title">Apple iPhone 12</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/9.png"
@@ -281,7 +295,7 @@
               </ul>
             </div>
             <div class="store-content__item">
-              <h3>Apple iPhone 11</h3>
+              <h3 class="store-content__title">Apple iPhone 11</h3>
               <div class="store-content__img-wrapper">
                 <img
                   src="./assets/phones/7.png"
