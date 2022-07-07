@@ -6,6 +6,7 @@
   background-color: rgba(19, 20, 21, 0.3);
   border: 2px solid $color-border;
   border-radius: 10px;
+  min-width: 260px;
   &:hover {
     cursor: pointer;
     @extend %transition;

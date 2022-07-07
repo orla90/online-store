@@ -190,6 +190,16 @@ h4 {
 .layout-3-column > * {
   flex-basis: 32%;
 }
+@media (max-width: 1024px) {
+  .layout-3-column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .layout-3-column > * {
+    flex-basis: 100%;
+  }
+}
 
 .layout-5-column {
   display: flex;
@@ -250,6 +260,7 @@ h4 {
   border-radius: 10px;
   backdrop-filter: blur(3px);
   padding: 10px 20px;
+  min-width: 328px;
 }
 
 .store-content__manufacturer-filter,
@@ -297,6 +308,7 @@ h4 {
   background-color: rgba(19, 20, 21, 0.3);
   border: 2px solid #626f71;
   border-radius: 10px;
+  min-width: 260px;
 }
 .store-content__item:hover {
   cursor: pointer;

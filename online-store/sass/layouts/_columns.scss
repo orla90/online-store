@@ -2,6 +2,9 @@
   @include columns($width: 32%, $justify: space-between);
   margin: 20px 0 30px;
   width: 100%;
+  @media (max-width: $tablet-big-width) { 
+    @include columns($width: 100%, $justify: space-between);
+  }
 }
 
 .layout-5-column {
