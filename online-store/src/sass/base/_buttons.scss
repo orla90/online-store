@@ -20,13 +20,13 @@
   border: 0;
   background-position: center;
   &.samsung {
-    background-image: url(../src/assets/media/samsung.svg);
+    background-image: url(../assets/media/samsung.svg);
   }
   &.apple {
-    background-image: url(../src/assets/media/apple.svg);
+    background-image: url(../assets/media/apple.svg);
   }
   &.xiaomi {
-    background-image: url(../src/assets/media/xiaomi.svg);
+    background-image: url(../assets/media/xiaomi.svg);
   }
   &:hover {
     filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)

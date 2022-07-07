@@ -10,7 +10,7 @@ body {
   font-size: 1.5rem;
   font-family: "Roboto", Verdana, sans-serif;
   color: #fff;
-  background: url(../src/assets/media/bg.jpg) no-repeat;
+  background: url(../assets/media/bg.jpg) no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
@@ -63,15 +63,15 @@ h4 {
 }
 .button_manufacturer.samsung,
 .samsung-img.samsung {
-  background-image: url(../src/assets/media/samsung.svg);
+  background-image: url(../assets/media/samsung.svg);
 }
 .button_manufacturer.apple,
 .samsung-img.apple {
-  background-image: url(../src/assets/media/apple.svg);
+  background-image: url(../assets/media/apple.svg);
 }
 .button_manufacturer.xiaomi,
 .samsung-img.xiaomi {
-  background-image: url(../src/assets/media/xiaomi.svg);
+  background-image: url(../assets/media/xiaomi.svg);
 }
 .button_manufacturer:hover,
 .samsung-img:hover {
@@ -168,7 +168,7 @@ h4 {
 .header__logo-wrapper a {
   display: block;
   margin: auto;
-  background-image: url(../src/assets/media/tree.svg);
+  background-image: url(../assets/media/tree.svg);
   width: 48px;
   height: 48px;
   background-repeat: no-repeat;
@@ -225,7 +225,7 @@ h4 {
 }
 
 .git-logo {
-  background: url(../src/assets/media/github.svg) no-repeat;
+  background: url(../assets/media/github.svg) no-repeat;
   background-size: contain;
   display: flex;
   height: 23px;
@@ -236,7 +236,7 @@ h4 {
 }
 
 .rss-logo {
-  background: url(../src/assets/media/logo_rss.svg) no-repeat;
+  background: url(../assets/media/logo_rss.svg) no-repeat;
   height: 23px;
   width: 61px;
   background-size: contain;
@@ -247,7 +247,7 @@ h4 {
 }
 
 .basket {
-  background-image: url(../src/assets/media/korzina.png);
+  background-image: url(../assets/media/korzina.png);
   width: 48px;
   height: 60px;
   background-size: contain;
@@ -354,7 +354,7 @@ h4 {
 
 #search-input {
   background-color: transparent;
-  background-image: url(../src/assets/media/search.svg);
+  background-image: url(../assets/media/search.svg);
   background-position: calc(100% - 20px);
   background-repeat: no-repeat;
   background-size: 20px;
