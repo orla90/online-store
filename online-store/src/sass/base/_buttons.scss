@@ -5,12 +5,11 @@
   cursor: pointer;
   &:hover {
     @extend %transition;
-    color: $color-cyan;
+    opacity: 0.8;
   }
 }
 
-.button_manufacturer,
-.samsung-img {
+.button_manufacturer {
   height: 40px;
   width: 40px;
   background-repeat: no-repeat;
@@ -19,6 +18,7 @@
   background-color: transparent;
   border: 0;
   background-position: center;
+  font-size: 0;
   &.samsung {
     background-image: url(../assets/media/samsung.svg);
   }
@@ -28,9 +28,8 @@
   &.xiaomi {
     background-image: url(../assets/media/xiaomi.svg);
   }
-  &:hover {
-    filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
-      brightness(93%) contrast(88%);
+  &.active {
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
   }
 }
 
@@ -75,7 +74,4 @@
   color: $color-white;
   margin: 10px 0;
   padding: 0 25px;
-  &:hover {
-    opacity: 0.8;
-  }
 }

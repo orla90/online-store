@@ -47,11 +47,10 @@ h4 {
   cursor: pointer;
 }
 .button:hover {
-  color: #278d9f;
+  opacity: 0.8;
 }
 
-.button_manufacturer,
-.samsung-img {
+.button_manufacturer {
   height: 40px;
   width: 40px;
   background-repeat: no-repeat;
@@ -60,22 +59,19 @@ h4 {
   background-color: transparent;
   border: 0;
   background-position: center;
+  font-size: 0;
 }
-.button_manufacturer.samsung,
-.samsung-img.samsung {
+.button_manufacturer.samsung {
   background-image: url(../assets/media/samsung.svg);
 }
-.button_manufacturer.apple,
-.samsung-img.apple {
+.button_manufacturer.apple {
   background-image: url(../assets/media/apple.svg);
 }
-.button_manufacturer.xiaomi,
-.samsung-img.xiaomi {
+.button_manufacturer.xiaomi {
   background-image: url(../assets/media/xiaomi.svg);
 }
-.button_manufacturer:hover,
-.samsung-img:hover {
-  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg) brightness(93%) contrast(88%);
+.button_manufacturer.active {
+  filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
 }
 
 .button_camera {
@@ -119,9 +115,6 @@ h4 {
   color: #fff;
   margin: 10px 0;
   padding: 0 25px;
-}
-.button_reset:hover {
-  opacity: 0.8;
 }
 
 #popular-input {
@@ -309,6 +302,9 @@ h4 {
   border: 2px solid #626f71;
   border-radius: 10px;
   min-width: 260px;
+}
+.store-content__item_hidden {
+  display: none;
 }
 .store-content__item:hover {
   cursor: pointer;
