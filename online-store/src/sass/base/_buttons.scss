@@ -46,6 +46,9 @@
   position: relative;
   width: 40px;
   color: $color-white;
+  &.active {
+    color: $color-beige;
+  }
 }
 
 .button_color {

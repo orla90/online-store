@@ -88,6 +88,9 @@ h4 {
   width: 40px;
   color: #fff;
 }
+.button_camera.active {
+  color: #cbb77a;
+}
 
 .button_color {
   border: 0;
