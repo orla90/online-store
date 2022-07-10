@@ -13,6 +13,10 @@ body {
   background: url(../assets/media/bg.jpg) no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 
 * {
@@ -198,13 +202,56 @@ h4 {
 }
 
 .layout-5-column {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  width: 96%;
+  margin: auto;
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
-.layout-5-column > * {
-  flex-basis: 18%;
+@media (max-width: 1600px) {
+  .layout-5-column {
+    display: grid;
+    width: 96%;
+    margin: auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 1280px) {
+  .layout-5-column {
+    display: grid;
+    width: 96%;
+    margin: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .layout-5-column {
+    display: grid;
+    width: 96%;
+    margin: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .layout-5-column {
+    display: grid;
+    width: 70%;
+    margin: auto;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 414px) {
+  .layout-5-column {
+    display: grid;
+    width: 96%;
+    margin: auto;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
 }
 
 .footer {
@@ -240,6 +287,18 @@ h4 {
 }
 .rss-logo:hover {
   filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg) brightness(93%) contrast(88%);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main:after {
+  content: "";
+  height: 48%;
+  display: block;
 }
 
 .basket {
@@ -297,6 +356,7 @@ h4 {
 }
 
 .store-content__item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -385,6 +445,28 @@ select#sort {
   width: 100%;
   min-height: 38px;
   cursor: pointer;
+}
+
+.ribbon {
+  position: absolute;
+  background: #cbb77a;
+  bottom: 15px;
+  left: -8px;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+.ribbon:after, .ribbon:before {
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+.ribbon:after {
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #cbb77a;
+  border-top: 15px solid transparent;
+  right: -15px;
 }
 
 /*# sourceMappingURL=style.css.map */

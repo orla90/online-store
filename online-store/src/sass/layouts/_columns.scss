@@ -8,6 +8,20 @@
 }
 
 .layout-5-column {
-  @include columns($width: 18%, $justify: space-around);
-  gap: 20px;
+  @include grid-columns($width: 96%, $repeat: repeat(5, 1fr));
+  @media (max-width: $content-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(4, 1fr));
+  }
+  @media (max-width: $pc-small-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(3, 1fr));
+  }
+  @media (max-width: $tablet-big-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(2, 1fr));
+  }
+  @media (max-width: $tablet-width) { 
+    @include grid-columns($width: 70%, $repeat: repeat(1, 1fr));
+  }
+  @media (max-width: $mobile-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(1, 1fr));
+  }
 }

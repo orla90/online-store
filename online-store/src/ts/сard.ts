@@ -75,9 +75,15 @@ export class Card implements CardData {
       template += `<li>Количество камер: <span class="camera-prop">${this.cameras}</span></li>`;
       template += `<li>Популярный: <span class="popular-prop">${this.isPopular}</span></li>`;
       template += `<ul>`;
+      // template += `<div class="ribbon" title="Добавлена в избранное"></div>`
     }
 
     card.innerHTML = template;
     return card;
+  }
+
+  generateRibbon(card: Card) {
+    // let template = "";
+    // const cardContent = card.innerHTML;
   }
 }

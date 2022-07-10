@@ -6,3 +6,11 @@
     flex-basis: $width;
   }
 }
+
+@mixin grid-columns($width, $repeat) {
+  display: grid;
+  width: $width;
+  margin: auto;
+  grid-template-columns: $repeat;
+  gap: 20px;
+}

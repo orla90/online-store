@@ -1,4 +1,4 @@
-import { Card } from './ts/Card'; 
+import { Card } from './ts/сard'; 
 import { data } from './ts/Data';
 import { CardData } from './ts/Interface';
 
@@ -10,8 +10,9 @@ window.onload = function () {
     renderCardsToDom();
   }
 
-  //Manufacurer filter
+  //Filters
   addManufacturerClickHandler();
+  addCamerasClickHandler();
 };
 
 const addManufacturerClickHandler = () => {
@@ -27,12 +28,32 @@ const addManufacturerClickHandler = () => {
     });
 };
 
+const addCamerasClickHandler = () => {
+  document
+    .querySelector(".camera-amount")
+    ?.addEventListener("click", (e) => {
+      if (
+        (e.target as HTMLDivElement).classList.contains("button_camera")
+      ) {
+        let clickedCameraFilter = e.target;
+        selectClickedCameraFilter(clickedCameraFilter);
+      }
+    });
+}
+
+
 const selectClickedManufacturerFilter = (
   clickedManufacturerFilter: EventTarget | null
 ) => {
   (clickedManufacturerFilter as HTMLDivElement).classList.toggle("active");
   filterCardsByManufacturer();
 };
+
+const selectClickedCameraFilter = (clickedCameraFilter: EventTarget | null) => {
+  (clickedCameraFilter as HTMLDivElement).classList.toggle("active");
+  filterCardsByManufacturer();
+}
+
 
 const filterCardsByManufacturer = () => {
   const cards = document.querySelectorAll(
@@ -41,8 +62,12 @@ const filterCardsByManufacturer = () => {
   const manufacturerButtons = document.querySelectorAll(
     ".manufacturer-list .button_manufacturer"
   );
+  const activeManufacturerButtons = document.querySelectorAll(
+    ".manufacturer-list .button_manufacturer.active"
+  );
 
-  cards.forEach((card) => {
+  if (activeManufacturerButtons.length !== 0) {
+    cards.forEach((card) => {
     card.classList.add("store-content__item_hidden");
   });
 
@@ -60,7 +85,53 @@ const filterCardsByManufacturer = () => {
       });
     }
   });
+
+  const cardsFilteredByManufacturer = Array.from(cards).filter(card => !card.classList.contains("store-content__item_hidden"));
+  console.log(cardsFilteredByManufacturer);
+  filterCardsByCameras(cardsFilteredByManufacturer); 
+
+  } else {
+    console.log(cards);
+    cards.forEach((card) => {
+      card.classList.remove("store-content__item_hidden");
+    });
+    filterCardsByCameras(Array.from(cards)); 
+  }
 };
+
+const filterCardsByCameras = (cardsArr: Array<Element>) => {
+  const camerasButtons = document.querySelectorAll(
+    ".camera-amount .button_camera"
+  );
+
+  const activeCameraButtons = document.querySelectorAll(
+    ".camera-amount .button_camera.active"
+  );
+
+  if (activeCameraButtons.length !== 0) {
+    cardsArr.forEach((card) => {
+    if (!card.classList.contains("store-content__item_hidden")) {
+      card.classList.add("store-content__item_hidden");
+    }
+  });
+
+  camerasButtons.forEach((cameraButton) => {
+    if (cameraButton.classList.contains("active")) {
+      cardsArr.forEach((card) => {
+        let cameraProp = (card.querySelector(
+          ".camera-prop"
+        ) as HTMLDivElement).innerText;
+        if (
+          (cameraButton as HTMLDivElement).innerText === cameraProp
+        ) {
+          card.classList.remove("store-content__item_hidden");
+        }
+      });
+    }
+  });
+};
+
+}
 
 const renderCardsToDom = () => {
   let cardsWrapper = getCardsWrapper();
