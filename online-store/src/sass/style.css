@@ -343,6 +343,18 @@ h4 {
   background-repeat: no-repeat;
 }
 
+.basket__quantity {
+  display: inline-block;
+  font-size: 20px;
+  min-width: 20px;
+  background-color: #278d9f;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin-left: 4px;
+  margin-top: 10px;
+  text-align: center;
+}
+
 .store-content__filter-group {
   background-color: rgba(19, 20, 21, 0.3);
   border: 1px solid #fff;
@@ -409,6 +421,9 @@ h4 {
 }
 .store-content__item:hover .store-content__title {
   color: #278d9f;
+}
+.store-content__item.active > .ribbon {
+  display: block;
 }
 
 .store-content__img-wrapper {
@@ -482,6 +497,7 @@ select#sort {
 }
 
 .ribbon {
+  display: none;
   position: absolute;
   background: #cbb77a;
   bottom: 15px;

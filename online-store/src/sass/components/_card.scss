@@ -19,6 +19,9 @@
     }
     transform: scale(1.1) translate(-1%, -1%);
   }
+  &.active > .ribbon {
+    display: block;
+  }
 }
 
 .store-content__img-wrapper {

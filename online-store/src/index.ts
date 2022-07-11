@@ -15,8 +15,12 @@ window.onload = function () {
   addCamerasClickHandler();
   addColorsClickHandler();
   addIsPopularClickHandler();
+
+  //Cards handlers
+  addCardClickHandler();
 };
 
+// Add Filters Handlers
 const addManufacturerClickHandler = () => {
   document
     .querySelector(".manufacturer-list")
@@ -219,6 +223,8 @@ const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
   }
 };
 
+//Add Cards Handlers
+
 const renderCardsToDom = () => {
   let cardsWrapper = getCardsWrapper();
   generateCards(data).forEach((card) => {
@@ -239,3 +245,32 @@ const generateCards = (data: Array<CardData>) => {
   });
   return cards;
 };
+
+const addCardClickHandler = () => {
+  document
+    .querySelectorAll(".store-content__item").forEach(item => {
+      item?.addEventListener("click", (e) => {
+        let clickedCard = e.currentTarget;
+        selectClickedCard(clickedCard);
+    });
+    }
+  )
+    
+};
+
+const selectClickedCard = (clickedCard: EventTarget | null) => {
+  (clickedCard as HTMLDivElement).classList.toggle("active");
+  countClickedCards();
+};
+
+const countClickedCards = () => {
+  let cardsCount = document.querySelectorAll(".store-content__item.active").length;
+  drawCardsCount(cardsCount);
+}
+
+const drawCardsCount = (cardsCount: number) => {
+  let cardsCountInBasket = document.querySelector('.basket__quantity');
+  if (cardsCount <= 20) {
+    (cardsCountInBasket as HTMLDivElement).innerText = cardsCount.toString();
+  }
+}
