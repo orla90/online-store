@@ -29,7 +29,8 @@
     background-image: url(../assets/media/xiaomi.svg);
   }
   &.active {
-    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg)
+      brightness(83%) contrast(88%);
   }
 }
 
@@ -52,13 +53,30 @@
 }
 
 .button_color {
+  position: relative;
   border: 0;
   border-radius: 5px;
   height: 30px;
   width: 30px;
   margin: 15px 10px;
+  font-size: 0;
+  &.active:after {
+    border: solid $color-white;
+    border-width: 0 4px 4px 0;
+    content: "";
+    display: block;
+    width: 6px;
+    height: 10px;
+    left: 9px;
+    position: absolute;
+    top: 5px;
+    transform: rotate(45deg);
+  }
   &.white {
     background-color: $color-white;
+    &:after {
+      border-color: $color-dark-grey;
+    }
   }
   &.yellow {
     background-color: $color-yellow;
@@ -77,4 +95,21 @@
   color: $color-white;
   margin: 10px 0;
   padding: 0 25px;
+}
+
+.popular-label {
+  position: relative;
+}
+
+#popular-input:checked + .popular-label:after {
+  position: absolute;
+  border: solid $color-white;
+  border-width: 0 4px 4px 0;
+  content: "";
+  display: block;
+  width: 6px;
+  height: 10px;
+  left: 9px;
+  top: 5px;
+  transform: rotate(45deg);
 }
