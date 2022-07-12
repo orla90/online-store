@@ -33,17 +33,29 @@
               <div class="store-content__manufacturer-filter">
                 <span>Производитель:</span>
                 <ul class="manufacturer-list">
-                  <button class="button button_manufacturer samsung active">Samsung</button>
-                  <button class="button button_manufacturer apple active">Apple</button>
-                  <button class="button button_manufacturer xiaomi active">Xiaomi</button>
+                  <button class="button button_manufacturer samsung active">
+                    Samsung
+                  </button>
+                  <button class="button button_manufacturer apple active">
+                    Apple
+                  </button>
+                  <button class="button button_manufacturer xiaomi active">
+                    Xiaomi
+                  </button>
                 </ul>
               </div>
               <div class="store-content__camera-filter">
                 <span>Количество камер:</span>
                 <ul class="camera-amount">
-                  <button class="button button_camera single-camera active">3</button>
-                  <button class="button button_camera two-camera active">2</button>
-                  <button class="button button_camera three-camera active">1</button>
+                  <button class="button button_camera single-camera active">
+                    3
+                  </button>
+                  <button class="button button_camera two-camera active">
+                    2
+                  </button>
+                  <button class="button button_camera three-camera active">
+                    1
+                  </button>
                 </ul>
               </div>
               <div class="store-content__color-filter">
@@ -62,7 +74,11 @@
                     name="popular-input"
                     id="popular-input"
                   />
-                  <label for="popular-input" name="popular-input" class="popular-label"></label>
+                  <label
+                    for="popular-input"
+                    name="popular-input"
+                    class="popular-label"
+                  ></label>
                 </div>
               </div>
             </div>
@@ -72,20 +88,66 @@
                 <h4 class="store-content__filter-subtitle">
                   Количество на складе:
                 </h4>
-                <div class="store-content__range-slider">
-                  <div class="store-content__range-numbers">1</div>
-                  <span class="store-content__range-track"></span>
-                  <div class="store-content__range-numbers">12</div>
+                <div class="store-content__amount-slider">
+                  <div class="store-content__amount-numbers">1</div>
+                  <div class="amount-slider-wrapper">
+                    <div class="amount-slider">
+                      <div class="amount-progress"></div>
+                      <div class="amount-value amount-value_min hidden"></div>
+                      <div class="amount-value amount-value_max hidden"></div>
+                    </div>
+                    <div class="amount-range-input">
+                      <input
+                        type="range"
+                        class="amount-range-min"
+                        min="1"
+                        max="20"
+                        value="1"
+                      />
+                      <input
+                        type="range"
+                        class="amount-range-max"
+                        min="1"
+                        max="20"
+                        value="20"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="store-content__amount-numbers">20</div>
                 </div>
               </div>
               <div class="store-content__range">
                 <h4 class="store-content__filter-subtitle">
                   Год выхода на рынок:
                 </h4>
-                <div class="store-content__range-slider">
-                  <div class="store-content__range-numbers">2000</div>
-                  <span class="store-content__range-track"></span>
-                  <div class="store-content__range-numbers">2022</div>
+                <div class="store-content__year-slider">
+                  <div class="store-content__year-numbers">2000</div>
+                  <div class="year-slider-wrapper">
+                    <div class="year-slider">
+                      <div class="year-progress"></div>
+                      <div class="year-value year-value_min hidden"></div>
+                      <div class="year-value year-value_max hidden"></div>
+                    </div>
+                    <div class="year-range-input">
+                      <input
+                        type="range"
+                        class="year-range-min"
+                        min="2000"
+                        max="2022"
+                        value="2000"
+                      />
+
+                      <input
+                        type="range"
+                        class="year-range-max"
+                        min="2000"
+                        max="2022"
+                        value="2022"
+                      />
+                    </div>
+                  </div>
+                  <div class="store-content__year-numbers">2022</div>
                 </div>
               </div>
             </div>

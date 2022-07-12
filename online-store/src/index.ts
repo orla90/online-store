@@ -18,6 +18,17 @@ window.onload = function () {
 
   //Cards handlers
   addCardClickHandler();
+
+  //Range Filters
+  getAmountRangeValues();
+  getYearRangeValues();
+};
+
+const valueObj = {
+  minAmountVal: 1,
+  maxAmountVal: 20,
+  minYearVal: 2000,
+  maxYearVal: 2022,
 };
 
 // Add Filters Handlers
@@ -75,7 +86,7 @@ const selectClickedColorFilter = (clickedColorFilter: EventTarget | null) => {
   filterCardsByManufacturer();
 };
 
-const filterCardsByManufacturer = () => {
+const filterCardsByManufacturer = (minAmount?: number, maxAmount?: number) => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
@@ -110,16 +121,20 @@ const filterCardsByManufacturer = () => {
     const cardsFilteredByManufacturer = Array.from(cards).filter(
       (card) => !card.classList.contains("store-content__item_hidden")
     );
-    filterCardsByCameras(cardsFilteredByManufacturer);
+    filterCardsByCameras(cardsFilteredByManufacturer, minAmount, maxAmount);
   } else {
     cards.forEach((card) => {
       card.classList.remove("store-content__item_hidden");
     });
-    filterCardsByCameras(Array.from(cards));
+    filterCardsByCameras(Array.from(cards), minAmount, maxAmount);
   }
 };
 
-const filterCardsByCameras = (cardsArr: Array<Element>) => {
+const filterCardsByCameras = (
+  cardsArr: Array<Element>,
+  minAmount?: number,
+  maxAmount?: number
+) => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
@@ -155,13 +170,17 @@ const filterCardsByCameras = (cardsArr: Array<Element>) => {
     const cardsFilteredByCameras = Array.from(cards).filter(
       (card) => !card.classList.contains("store-content__item_hidden")
     );
-    filterCardsByColors(cardsFilteredByCameras);
+    filterCardsByColors(cardsFilteredByCameras, minAmount, maxAmount);
   } else {
-    filterCardsByColors(cardsArr);
+    filterCardsByColors(cardsArr, minAmount, maxAmount);
   }
 };
 
-const filterCardsByColors = (cardsArr: Array<Element>) => {
+const filterCardsByColors = (
+  cardsArr: Array<Element>,
+  minAmount?: number,
+  maxAmount?: number
+) => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
@@ -194,13 +213,21 @@ const filterCardsByColors = (cardsArr: Array<Element>) => {
     const cardsFilteredByColors = Array.from(cards).filter(
       (card) => !card.classList.contains("store-content__item_hidden")
     );
-    filterCardsByIsPopular(cardsFilteredByColors);
+    filterCardsByIsPopular(cardsFilteredByColors, minAmount, maxAmount);
   } else {
-    filterCardsByIsPopular(cardsArr);
+    filterCardsByIsPopular(cardsArr, minAmount, maxAmount);
   }
 };
 
-const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
+const filterCardsByIsPopular = (
+  cardsArr: Array<Element>,
+  minAmount?: number,
+  maxAmount?: number
+) => {
+  const cards = document.querySelectorAll(
+    ".layout-5-column .store-content__item"
+  );
+
   const isPopularButtonChecked = document.querySelectorAll(
     "#popular-input:checked"
   );
@@ -220,7 +247,64 @@ const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
         card.classList.remove("store-content__item_hidden");
       }
     });
+    const cardsFilteredByIsPopular = Array.from(cards).filter(
+      (card) => !card.classList.contains("store-content__item_hidden")
+    );
+    filterCardsByAmount(cardsFilteredByIsPopular, minAmount, maxAmount);
+  } else {
+    filterCardsByAmount(cardsArr, minAmount, maxAmount);
   }
+};
+
+const filterCardsByAmount = (
+  cardsArr: Array<Element>,
+  minAmount?: number,
+  maxAmount?: number
+) => {
+  const cards = document.querySelectorAll(
+    ".layout-5-column .store-content__item"
+  );
+  if (minAmount || maxAmount) {
+    cardsArr.forEach((card) => {
+      if (!card.classList.contains("store-content__item_hidden")) {
+        card.classList.add("store-content__item_hidden");
+      }
+    });
+
+    cardsArr.forEach((card) => {
+      let amount = (card.querySelector(".amount-prop") as HTMLDivElement)
+        .innerText;
+      if (
+        parseInt(amount) >= valueObj.minAmountVal &&
+        parseInt(amount) <= valueObj.maxAmountVal
+      ) {
+        card.classList.remove("store-content__item_hidden");
+      }
+    });
+    const cardsFilteredByYear = Array.from(cards).filter(
+      (card) => !card.classList.contains("store-content__item_hidden")
+    );
+    filterCardsByYear(cardsFilteredByYear);
+  } else {
+    filterCardsByYear(cardsArr);
+  }
+};
+
+const filterCardsByYear = (cardsArr: Array<Element>) => {
+  cardsArr.forEach((card) => {
+    if (!card.classList.contains("store-content__item_hidden")) {
+      card.classList.add("store-content__item_hidden");
+    }
+  });
+  cardsArr.forEach((card) => {
+    let year = (card.querySelector(".year-prop") as HTMLDivElement).innerText;
+    if (
+      parseInt(year) >= valueObj.minYearVal &&
+      parseInt(year) <= valueObj.maxYearVal
+    ) {
+      card.classList.remove("store-content__item_hidden");
+    }
+  });
 };
 
 //Add Cards Handlers
@@ -247,15 +331,12 @@ const generateCards = (data: Array<CardData>) => {
 };
 
 const addCardClickHandler = () => {
-  document
-    .querySelectorAll(".store-content__item").forEach(item => {
-      item?.addEventListener("click", (e) => {
-        let clickedCard = e.currentTarget;
-        selectClickedCard(clickedCard);
+  document.querySelectorAll(".store-content__item").forEach((item) => {
+    item?.addEventListener("click", (e) => {
+      let clickedCard = e.currentTarget;
+      selectClickedCard(clickedCard);
     });
-    }
-  )
-    
+  });
 };
 
 const selectClickedCard = (clickedCard: EventTarget | null) => {
@@ -264,13 +345,129 @@ const selectClickedCard = (clickedCard: EventTarget | null) => {
 };
 
 const countClickedCards = () => {
-  let cardsCount = document.querySelectorAll(".store-content__item.active").length;
+  let cardsCount = document.querySelectorAll(".store-content__item.active")
+    .length;
   drawCardsCount(cardsCount);
-}
+};
 
 const drawCardsCount = (cardsCount: number) => {
-  let cardsCountInBasket = document.querySelector('.basket__quantity');
+  let cardsCountInBasket = document.querySelector(".basket__quantity");
   if (cardsCount <= 20) {
     (cardsCountInBasket as HTMLDivElement).innerText = cardsCount.toString();
   }
-}
+};
+
+//Range inputs
+const getAmountRangeValues = () => {
+  const rangeInput = document.querySelectorAll(".amount-range-input input");
+  const amountInput = document.querySelectorAll(
+    ".store-content__amount-numbers"
+  );
+  const progress = document.querySelector(".amount-slider .amount-progress");
+  const minValueBox = document.querySelector(
+    ".amount-slider .amount-value_min"
+  );
+  const maxValueBox = document.querySelector(
+    ".amount-slider .amount-value_max"
+  );
+  const amountGap = 1;
+  rangeInput.forEach((input) => {
+    input.addEventListener("input", (e: Event) => {
+      let minValue = parseInt((rangeInput[0] as HTMLInputElement).value),
+        maxValue = parseInt((rangeInput[1] as HTMLInputElement).value);
+
+      if (maxValue - minValue < amountGap) {
+        if ((<HTMLTextAreaElement>e.target).className === "amount-range-min") {
+          (rangeInput[0] as HTMLInputElement).value = (
+            maxValue - amountGap
+          ).toString();
+        } else {
+          (rangeInput[1] as HTMLInputElement).value = (
+            minValue + amountGap
+          ).toString();
+        }
+      } else {
+        minValueBox?.classList.remove("hidden");
+        maxValueBox?.classList.remove("hidden");
+        amountInput[0].innerHTML = minValue.toString();
+        amountInput[1].innerHTML = maxValue.toString();
+        (progress as HTMLDivElement).style.left = `${Math.trunc(
+          (minValue * 100) / 20
+        )}%`;
+        (minValueBox as HTMLDivElement).style.left = `${Math.trunc(
+          (minValue * 100) / 20
+        )}%`;
+        (minValueBox as HTMLDivElement).innerHTML = minValue.toString();
+        (progress as HTMLDivElement).style.right = `${
+          100 - Math.trunc((maxValue * 100) / 20)
+        }%`;
+        (maxValueBox as HTMLDivElement).style.left = `${Math.trunc(
+          (maxValue * 100) / 20
+        )}%`;
+        (maxValueBox as HTMLDivElement).innerHTML = maxValue.toString();
+        valueObj.minAmountVal = minValue;
+        valueObj.maxAmountVal = maxValue;
+        filterCardsByManufacturer(minValue, maxValue);
+      }
+    });
+    input.addEventListener("change", (e: Event) => {
+      minValueBox?.classList.add("hidden");
+      maxValueBox?.classList.add("hidden");
+    });
+  });
+};
+
+const getYearRangeValues = () => {
+  const rangeInput = document.querySelectorAll(".year-range-input input");
+  const yearInput = document.querySelectorAll(".store-content__year-numbers");
+  const progress = document.querySelector(".year-slider .year-progress");
+  const minValueBox = document.querySelector(".year-slider .year-value_min");
+  const maxValueBox = document.querySelector(".year-slider .year-value_max");
+  const amountGap = 1;
+  rangeInput.forEach((input) => {
+    input.addEventListener("input", (e: Event) => {
+      let minValue = parseInt((rangeInput[0] as HTMLInputElement).value),
+        maxValue = parseInt((rangeInput[1] as HTMLInputElement).value);
+
+      if (maxValue - minValue < amountGap) {
+        if ((<HTMLTextAreaElement>e.target).className === "year-range-min") {
+          (rangeInput[0] as HTMLInputElement).value = (
+            maxValue - amountGap
+          ).toString();
+        } else {
+          (rangeInput[1] as HTMLInputElement).value = (
+            minValue + amountGap
+          ).toString();
+        }
+      } else {
+        minValueBox?.classList.remove("hidden");
+        maxValueBox?.classList.remove("hidden");
+        yearInput[0].innerHTML = minValue.toString();
+        yearInput[1].innerHTML = maxValue.toString();
+
+        (progress as HTMLDivElement).style.left = `${Math.trunc(
+          ((minValue - 2000) * 100) / 22
+        )}%`;
+        (minValueBox as HTMLDivElement).style.left = `${Math.trunc(
+          ((minValue - 2000) * 100) / 22
+        )}%`;
+        (minValueBox as HTMLDivElement).innerHTML = minValue.toString();
+
+        (progress as HTMLDivElement).style.right = `${
+          100 - Math.trunc(((maxValue - 2000) * 100) / 22)
+        }%`;
+        (maxValueBox as HTMLDivElement).style.left = `${Math.trunc(
+          ((maxValue - 2000) * 100) / 22
+        )}%`;
+        (maxValueBox as HTMLDivElement).innerHTML = maxValue.toString();
+        valueObj.minYearVal = minValue;
+        valueObj.maxYearVal = maxValue;
+        filterCardsByManufacturer();
+      }
+    });
+    input.addEventListener("change", (e: Event) => {
+      minValueBox?.classList.add("hidden");
+      maxValueBox?.classList.add("hidden");
+    });
+  });
+};
