@@ -26,6 +26,10 @@ window.onload = function () {
   //Range Filters
   getAmountRangeValues();
   getYearRangeValues();
+
+  //Search Handler
+  addSearchHandler();
+  addClearIconHandler();
 };
 
 const valueObj = {
@@ -74,6 +78,8 @@ const addIsPopularClickHandler = () => {
   });
 };
 
+//Add Sort Handler
+
 const addSortHandler = () => {
   const sortOptions = document.getElementById("sort");
   sortOptions?.addEventListener(
@@ -85,6 +91,86 @@ const addSortHandler = () => {
     false
   );
 };
+
+//Add Search Handler
+
+const addSearchHandler = () => {
+  const searchWindow = document.getElementById(
+    "search-input"
+  ) as HTMLInputElement;
+
+  searchWindow?.addEventListener("input", () => {
+    const cards = document.querySelectorAll(".store-content__item");
+    const filtered = Array.from(cards).filter(
+      (card) => !card.classList.contains("store-content__item_hidden")
+    );
+    const val = searchWindow?.value.toLowerCase().trim();
+    if (val != "") {
+      hideSearchIcon();
+      filtered.forEach((card) => {
+        let title = card.getAttribute("data-title")?.toLowerCase();
+        console.log(title);
+        if (title?.search(val) == -1) {
+          card.classList.add("hide");
+        } else {
+          card.classList.remove("hide");
+          // console.log(title);
+        }
+      });
+    } else {
+      filtered.forEach((card) => {
+        card.classList.remove("hide");
+      });
+      displaySearchIcon();
+    }
+  });
+};
+
+const addClearIconHandler = () => {
+  const searchWindow = document.getElementById(
+    "search-input"
+  ) as HTMLInputElement;
+  const crossImg = document.querySelector(
+    ".store-content__search-window .clear-img"
+  );
+  crossImg?.addEventListener("click", () => {
+    searchWindow.value = "";
+    const cards = document.querySelectorAll(".store-content__item");
+    const filtered = Array.from(cards).filter(
+      (card) => !card.classList.contains("store-content__item_hidden")
+    );
+    filtered.forEach((card) => {
+      card.classList.remove("hide");
+    });
+    displaySearchIcon();
+  });
+};
+
+//Toggle Search Icons
+
+const hideSearchIcon = () => {
+  const searchImg = document.querySelector(
+    ".store-content__search-window .search-img"
+  );
+  const crossImg = document.querySelector(
+    ".store-content__search-window .clear-img"
+  );
+  searchImg?.classList.add("hidden");
+  crossImg?.classList.remove("hidden");
+};
+
+const displaySearchIcon = () => {
+  const searchImg = document.querySelector(
+    ".store-content__search-window .search-img"
+  );
+  const crossImg = document.querySelector(
+    ".store-content__search-window .clear-img"
+  );
+  searchImg?.classList.remove("hidden");
+  crossImg?.classList.add("hidden");
+};
+
+//Add Filters
 
 const selectClickedManufacturerFilter = (
   clickedManufacturerFilter: EventTarget | null
@@ -311,7 +397,7 @@ const filterCardsByYear = (cardsArr: Array<Element>) => {
   sortCards(cardsArr);
 };
 
-// Add Sort Handlers
+// Add Sorting
 
 const insertAfter = (elem: Element, refElem: Element) => {
   return refElem.parentNode?.insertBefore(elem, refElem.nextSibling);
@@ -577,3 +663,5 @@ const getYearRangeValues = () => {
     });
   });
 };
+
+//Search input

@@ -11,6 +11,9 @@
   &_hidden {
     display: none;
   }
+  &.hide {
+    display: none;
+  }
   &:hover {
     cursor: pointer;
     @extend %transition;
