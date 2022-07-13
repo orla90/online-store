@@ -49,6 +49,9 @@ export class Card implements CardData {
     let card = document.createElement("div");
     card.className = "store-content__item";
     card.setAttribute("data-id", this.id);
+    card.setAttribute("data-title", this.title);
+    card.setAttribute("data-amount", this.amount.toString());
+    card.setAttribute("data-year", this.year.toString());
 
     this.title &&
       (template += `<h3 class="store-content__title">${this.title}</h3>`);

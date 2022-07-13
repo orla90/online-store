@@ -7,6 +7,7 @@ window.onload = function () {
 
   // Render Cards
   if (data) {
+    // sortCardByNameAsc(data);
     renderCardsToDom();
   }
 
@@ -15,6 +16,9 @@ window.onload = function () {
   addCamerasClickHandler();
   addColorsClickHandler();
   addIsPopularClickHandler();
+
+  //Sort handlers
+  addSortHandler();
 
   //Cards handlers
   addCardClickHandler();
@@ -29,6 +33,7 @@ const valueObj = {
   maxAmountVal: 20,
   minYearVal: 2000,
   maxYearVal: 2022,
+  sortingScheme: "sort-by-name-desc",
 };
 
 // Add Filters Handlers
@@ -69,6 +74,18 @@ const addIsPopularClickHandler = () => {
   });
 };
 
+const addSortHandler = () => {
+  const sortOptions = document.getElementById("sort");
+  sortOptions?.addEventListener(
+    "change",
+    function () {
+      valueObj.sortingScheme = (this as HTMLSelectElement).value;
+      filterCardsByManufacturer();
+    },
+    false
+  );
+};
+
 const selectClickedManufacturerFilter = (
   clickedManufacturerFilter: EventTarget | null
 ) => {
@@ -86,7 +103,7 @@ const selectClickedColorFilter = (clickedColorFilter: EventTarget | null) => {
   filterCardsByManufacturer();
 };
 
-const filterCardsByManufacturer = (minAmount?: number, maxAmount?: number) => {
+const filterCardsByManufacturer = () => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
@@ -121,20 +138,16 @@ const filterCardsByManufacturer = (minAmount?: number, maxAmount?: number) => {
     const cardsFilteredByManufacturer = Array.from(cards).filter(
       (card) => !card.classList.contains("store-content__item_hidden")
     );
-    filterCardsByCameras(cardsFilteredByManufacturer, minAmount, maxAmount);
+    filterCardsByCameras(cardsFilteredByManufacturer);
   } else {
     cards.forEach((card) => {
       card.classList.remove("store-content__item_hidden");
     });
-    filterCardsByCameras(Array.from(cards), minAmount, maxAmount);
+    filterCardsByCameras(Array.from(cards));
   }
 };
 
-const filterCardsByCameras = (
-  cardsArr: Array<Element>,
-  minAmount?: number,
-  maxAmount?: number
-) => {
+const filterCardsByCameras = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
@@ -170,17 +183,13 @@ const filterCardsByCameras = (
     const cardsFilteredByCameras = Array.from(cards).filter(
       (card) => !card.classList.contains("store-content__item_hidden")
     );
-    filterCardsByColors(cardsFilteredByCameras, minAmount, maxAmount);
+    filterCardsByColors(cardsFilteredByCameras);
   } else {
-    filterCardsByColors(cardsArr, minAmount, maxAmount);
+    filterCardsByColors(cardsArr);
   }
 };
 
-const filterCardsByColors = (
-  cardsArr: Array<Element>,
-  minAmount?: number,
-  maxAmount?: number
-) => {
+const filterCardsByColors = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
@@ -213,17 +222,13 @@ const filterCardsByColors = (
     const cardsFilteredByColors = Array.from(cards).filter(
       (card) => !card.classList.contains("store-content__item_hidden")
     );
-    filterCardsByIsPopular(cardsFilteredByColors, minAmount, maxAmount);
+    filterCardsByIsPopular(cardsFilteredByColors);
   } else {
-    filterCardsByIsPopular(cardsArr, minAmount, maxAmount);
+    filterCardsByIsPopular(cardsArr);
   }
 };
 
-const filterCardsByIsPopular = (
-  cardsArr: Array<Element>,
-  minAmount?: number,
-  maxAmount?: number
-) => {
+const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
@@ -250,47 +255,42 @@ const filterCardsByIsPopular = (
     const cardsFilteredByIsPopular = Array.from(cards).filter(
       (card) => !card.classList.contains("store-content__item_hidden")
     );
-    filterCardsByAmount(cardsFilteredByIsPopular, minAmount, maxAmount);
+    filterCardsByAmount(cardsFilteredByIsPopular);
   } else {
-    filterCardsByAmount(cardsArr, minAmount, maxAmount);
+    filterCardsByAmount(cardsArr);
   }
 };
 
-const filterCardsByAmount = (
-  cardsArr: Array<Element>,
-  minAmount?: number,
-  maxAmount?: number
-) => {
+const filterCardsByAmount = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
     ".layout-5-column .store-content__item"
   );
-  if (minAmount || maxAmount) {
-    cardsArr.forEach((card) => {
-      if (!card.classList.contains("store-content__item_hidden")) {
-        card.classList.add("store-content__item_hidden");
-      }
-    });
+  cardsArr.forEach((card) => {
+    if (!card.classList.contains("store-content__item_hidden")) {
+      card.classList.add("store-content__item_hidden");
+    }
+  });
 
-    cardsArr.forEach((card) => {
-      let amount = (card.querySelector(".amount-prop") as HTMLDivElement)
-        .innerText;
-      if (
-        parseInt(amount) >= valueObj.minAmountVal &&
-        parseInt(amount) <= valueObj.maxAmountVal
-      ) {
-        card.classList.remove("store-content__item_hidden");
-      }
-    });
-    const cardsFilteredByYear = Array.from(cards).filter(
-      (card) => !card.classList.contains("store-content__item_hidden")
-    );
-    filterCardsByYear(cardsFilteredByYear);
-  } else {
-    filterCardsByYear(cardsArr);
-  }
+  cardsArr.forEach((card) => {
+    let amount = (card.querySelector(".amount-prop") as HTMLDivElement)
+      .innerText;
+    if (
+      parseInt(amount) >= valueObj.minAmountVal &&
+      parseInt(amount) <= valueObj.maxAmountVal
+    ) {
+      card.classList.remove("store-content__item_hidden");
+    }
+  });
+  const cardsFilteredByAmount = Array.from(cards).filter(
+    (card) => !card.classList.contains("store-content__item_hidden")
+  );
+  filterCardsByYear(cardsFilteredByAmount);
 };
 
 const filterCardsByYear = (cardsArr: Array<Element>) => {
+  const cards = document.querySelectorAll(
+    ".layout-5-column .store-content__item"
+  );
   cardsArr.forEach((card) => {
     if (!card.classList.contains("store-content__item_hidden")) {
       card.classList.add("store-content__item_hidden");
@@ -305,6 +305,112 @@ const filterCardsByYear = (cardsArr: Array<Element>) => {
       card.classList.remove("store-content__item_hidden");
     }
   });
+  const cardsFilteredByYear = Array.from(cards).filter(
+    (card) => !card.classList.contains("store-content__item_hidden")
+  );
+  sortCards(cardsArr);
+};
+
+// Add Sort Handlers
+
+const insertAfter = (elem: Element, refElem: Element) => {
+  return refElem.parentNode?.insertBefore(elem, refElem.nextSibling);
+};
+
+const sortNumbersAsc = (parent: Element, attr: string) => {
+  for (let i = 0; i < parent.children.length; i++) {
+    for (let j = i; j < parent.children.length; j++) {
+      if (
+        +parent.children[i].getAttribute(attr)! >
+        +parent.children[j].getAttribute(attr)!
+      ) {
+        let replacedNode = parent.replaceChild(
+          parent.children[j],
+          parent.children[i]
+        );
+        insertAfter(replacedNode, parent.children[i]);
+      }
+    }
+  }
+};
+
+const sortNumbersDesc = (parent: Element, attr: string) => {
+  for (let i = 0; i < parent.children.length; i++) {
+    for (let j = i; j < parent.children.length; j++) {
+      if (
+        +parent.children[i].getAttribute(attr)! <
+        +parent.children[j].getAttribute(attr)!
+      ) {
+        let replacedNode = parent.replaceChild(
+          parent.children[j],
+          parent.children[i]
+        );
+        insertAfter(replacedNode, parent.children[i]);
+      }
+    }
+  }
+};
+
+const sortStringAsc = (parent: Element, attr: string) => {
+  for (let i = 0; i < parent.children.length; i++) {
+    for (let j = i; j < parent.children.length; j++) {
+      if (
+        parent.children[i].getAttribute(attr)! >
+        parent.children[j].getAttribute(attr)!
+      ) {
+        let replacedNode = parent.replaceChild(
+          parent.children[j],
+          parent.children[i]
+        );
+        insertAfter(replacedNode, parent.children[i]);
+      }
+    }
+  }
+};
+
+const sortStringDesc = (parent: Element, attr: string) => {
+  for (let i = 0; i < parent.children.length; i++) {
+    for (let j = i; j < parent.children.length; j++) {
+      if (
+        parent.children[i].getAttribute(attr)! <
+        parent.children[j].getAttribute(attr)!
+      ) {
+        let replacedNode = parent.replaceChild(
+          parent.children[j],
+          parent.children[i]
+        );
+        insertAfter(replacedNode, parent.children[i]);
+      }
+    }
+  }
+};
+
+const sortCards = (cardsArr: Array<Element>) => {
+  const parent = document.querySelector(".store-content__wrapper") as Element;
+
+  if (valueObj.sortingScheme === "sort-by-name-asc") {
+    sortStringAsc(parent, "data-title");
+  }
+
+  if (valueObj.sortingScheme === "sort-by-name-desc") {
+    sortStringDesc(parent, "data-title");
+  }
+
+  if (valueObj.sortingScheme === "ascending-amount") {
+    sortNumbersAsc(parent, "data-amount");
+  }
+
+  if (valueObj.sortingScheme === "descending-amount") {
+    sortNumbersDesc(parent, "data-amount");
+  }
+
+  if (valueObj.sortingScheme === "ascending-year") {
+    sortNumbersAsc(parent, "data-year");
+  }
+
+  if (valueObj.sortingScheme === "descending-year") {
+    sortNumbersDesc(parent, "data-year");
+  }
 };
 
 //Add Cards Handlers
@@ -407,10 +513,10 @@ const getAmountRangeValues = () => {
         (maxValueBox as HTMLDivElement).innerHTML = maxValue.toString();
         valueObj.minAmountVal = minValue;
         valueObj.maxAmountVal = maxValue;
-        filterCardsByManufacturer(minValue, maxValue);
+        filterCardsByManufacturer();
       }
     });
-    input.addEventListener("change", (e: Event) => {
+    input.addEventListener("mouseup", (e: Event) => {
       minValueBox?.classList.add("hidden");
       maxValueBox?.classList.add("hidden");
     });
@@ -465,7 +571,7 @@ const getYearRangeValues = () => {
         filterCardsByManufacturer();
       }
     });
-    input.addEventListener("change", (e: Event) => {
+    input.addEventListener("mouseup", (e: Event) => {
       minValueBox?.classList.add("hidden");
       maxValueBox?.classList.add("hidden");
     });
