@@ -2,7 +2,7 @@ import { CardData } from "./Interface";
 
 export const data: CardData[] = [
   {
-    id: '1',
+    id: "1",
     title: "Xiaomi Redmi Note 11",
     urlToImg: "../src/assets/phones/5.png",
     amount: 4,
@@ -13,7 +13,7 @@ export const data: CardData[] = [
     isPopular: "да",
   },
   {
-    id: '2',
+    id: "2",
     title: "Xiaomi Redmi 9C 3/64gb",
     urlToImg: "../src/assets/phones/6.png",
     amount: 6,
@@ -24,7 +24,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '3',
+    id: "3",
     title: "Xiaomi Poco X4 pro1",
     urlToImg: "../src/assets/phones/4.png",
     amount: 1,
@@ -35,7 +35,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '4',
+    id: "4",
     title: "Samsung Galaxy S21",
     urlToImg: "../src/assets/phones/1.png",
     amount: 2,
@@ -46,7 +46,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '5',
+    id: "5",
     title: "Samsung Galaxy S20",
     urlToImg: "../src/assets/phones/3.png",
     amount: 3,
@@ -57,7 +57,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '6',
+    id: "6",
     title: "Samsung Galaxy A03",
     urlToImg: "../src/assets/phones/2.png",
     amount: 5,
@@ -68,7 +68,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '7',
+    id: "7",
     title: "Apple iPhone SE",
     urlToImg: "../src/assets/phones/10.png",
     amount: 7,
@@ -79,7 +79,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '8',
+    id: "8",
     title: "Apple iPhone 13",
     urlToImg: "../src/assets/phones/8.png",
     amount: 10,
@@ -90,7 +90,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '9',
+    id: "9",
     title: "Apple iPhone 12",
     urlToImg: "../src/assets/phones/9.png",
     amount: 2,
@@ -101,7 +101,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '10',
+    id: "10",
     title: "Apple iPhone 11",
     urlToImg: "../src/assets/phones/7.png",
     amount: 12,
@@ -112,7 +112,7 @@ export const data: CardData[] = [
     isPopular: "да",
   },
   {
-    id: '11',
+    id: "11",
     title: "Apple iPhone 13",
     urlToImg: "../src/assets/phones/11.png",
     amount: 10,
@@ -123,7 +123,7 @@ export const data: CardData[] = [
     isPopular: "да",
   },
   {
-    id: '12',
+    id: "12",
     title: "Apple iPhone 12 mini",
     urlToImg: "../src/assets/phones/12.png",
     amount: 1,
@@ -134,7 +134,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '13',
+    id: "13",
     title: "Apple iPhone 13 Pro Max",
     urlToImg: "../src/assets/phones/13.png",
     amount: 7,
@@ -145,7 +145,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '14',
+    id: "14",
     title: "Apple iPhone XS",
     urlToImg: "../src/assets/phones/14.png",
     amount: 7,
@@ -156,7 +156,7 @@ export const data: CardData[] = [
     isPopular: "да",
   },
   {
-    id: '15',
+    id: "15",
     title: "Xiaomi 12 Lite",
     urlToImg: "../src/assets/phones/15.png",
     amount: 2,
@@ -167,7 +167,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '16',
+    id: "16",
     title: "Xiaomi Redmi 10",
     urlToImg: "../src/assets/phones/16.png",
     amount: 4,
@@ -178,7 +178,7 @@ export const data: CardData[] = [
     isPopular: "да",
   },
   {
-    id: '17',
+    id: "17",
     title: "Xiaomi 11 Lite",
     urlToImg: "../src/assets/phones/17.png",
     amount: 6,
@@ -189,7 +189,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '18',
+    id: "18",
     title: "Samsung Galaxy S22+",
     urlToImg: "../src/assets/phones/18.png",
     amount: 20,
@@ -200,7 +200,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '19',
+    id: "19",
     title: "Samsung Galaxy A33",
     urlToImg: "../src/assets/phones/19.png",
     amount: 17,
@@ -211,7 +211,7 @@ export const data: CardData[] = [
     isPopular: "да",
   },
   {
-    id: '20',
+    id: "20",
     title: "Samsung Galaxy S22",
     urlToImg: "../src/assets/phones/20.png",
     amount: 3,
@@ -222,7 +222,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '21',
+    id: "21",
     title: "Samsung Galaxy S22 Ultra",
     urlToImg: "../src/assets/phones/21.png",
     amount: 3,
@@ -233,7 +233,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '22',
+    id: "22",
     title: "Realme 9i",
     urlToImg: "../src/assets/phones/22.png",
     amount: 9,
@@ -244,7 +244,7 @@ export const data: CardData[] = [
     isPopular: "да",
   },
   {
-    id: '23',
+    id: "23",
     title: "Realme 8i",
     urlToImg: "../src/assets/phones/23.png",
     amount: 2,
@@ -255,7 +255,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '24',
+    id: "24",
     title: "Realme C25s",
     urlToImg: "../src/assets/phones/24.png",
     amount: 14,
@@ -266,7 +266,7 @@ export const data: CardData[] = [
     isPopular: "нет",
   },
   {
-    id: '25',
+    id: "25",
     title: "Realme 9 Pro",
     urlToImg: "../src/assets/phones/25.png",
     amount: 18,

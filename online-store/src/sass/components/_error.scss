@@ -1,0 +1,19 @@
+.error__img-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  background: $color-white;
+  width: 70%;
+  border-radius: 20px;
+  img {
+    height: 200px;
+    width: auto;
+  }
+}
+
+.error__title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 40px;
+}

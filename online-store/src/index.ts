@@ -1,6 +1,8 @@
 import { Card } from "./ts/сard";
 import { CardData } from "./ts/Interface";
 import { data } from "./ts/phonesData";
+import { Modal } from "./ts/modal";
+import { ErrorModal } from "./ts/errorModal";
 
 window.onload = function () {
   console.log("Hello");
@@ -108,14 +110,18 @@ const addSearchHandler = () => {
       hideSearchIcon();
       filtered.forEach((card) => {
         let title = card.getAttribute("data-title")?.toLowerCase();
-        console.log(title);
         if (title?.search(val) == -1) {
           card.classList.add("hide");
         } else {
           card.classList.remove("hide");
-          // console.log(title);
         }
       });
+      const twiceFiltered = filtered.filter(
+        (card) => !card.classList.contains("hide")
+      );
+      if (twiceFiltered.length === 0) {
+        generateAbsentModal();
+      }
     } else {
       filtered.forEach((card) => {
         card.classList.remove("hide");
@@ -472,6 +478,16 @@ const sortStringDesc = (parent: Element, attr: string) => {
 
 const sortCards = (cardsArr: Array<Element>) => {
   const parent = document.querySelector(".store-content__wrapper") as Element;
+  const filtered = cardsArr.filter(
+    (card) =>
+      !card.classList.contains("hide") &&
+      !card.classList.contains("store-content__item_hidden")
+  );
+  const overlay = document.querySelector(".overlay");
+
+  if (filtered.length === 0 && !overlay) {
+    generateAbsentModal();
+  }
 
   if (valueObj.sortingScheme === "sort-by-name-asc") {
     sortStringAsc(parent, "data-title");
@@ -524,8 +540,18 @@ const generateCards = (data: Array<CardData>) => {
 const addCardClickHandler = () => {
   document.querySelectorAll(".store-content__item").forEach((item) => {
     item?.addEventListener("click", (e) => {
+      let clickedCards = document.querySelectorAll(
+        ".store-content__item.active"
+      );
       let clickedCard = e.currentTarget;
-      selectClickedCard(clickedCard);
+      if (
+        clickedCards.length < 20 ||
+        (clickedCard as HTMLDivElement).classList.contains("active")
+      ) {
+        selectClickedCard(clickedCard);
+      } else {
+        generateBasketModal();
+      }
     });
   });
 };
@@ -545,6 +571,8 @@ const drawCardsCount = (cardsCount: number) => {
   let cardsCountInBasket = document.querySelector(".basket__quantity");
   if (cardsCount <= 20) {
     (cardsCountInBasket as HTMLDivElement).innerText = cardsCount.toString();
+  } else {
+    generateBasketModal();
   }
 };
 
@@ -663,4 +691,23 @@ const getYearRangeValues = () => {
   });
 };
 
-//Search input
+//Generate Modal Windows
+
+const generateBasketModal = () => {
+  renderErrorModalWindow(
+    "../src/assets/media/dog.jpeg",
+    "Извините, все слоты заполнены"
+  );
+};
+
+const generateAbsentModal = () => {
+  renderErrorModalWindow(
+    "../src/assets/media/dog404.jpeg",
+    "Извините, совпадений не обнаружено"
+  );
+};
+
+const renderErrorModalWindow = (urlToImg: string, text: string) => {
+  let modal = new ErrorModal("modal", { urlToImg, text });
+  modal.renderErrorModal();
+};

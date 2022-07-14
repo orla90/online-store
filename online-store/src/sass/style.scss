@@ -9,6 +9,7 @@
 @import "base/base";
 @import "base/buttons";
 @import "base/inputs";
+@import "base/modal";
 
 //Layouts
 @import "layouts/wrapper";
@@ -25,3 +26,4 @@
 @import "components/sort";
 @import "components/ribbon";
 @import "components/slider";
+@import "components/error";

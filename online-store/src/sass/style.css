@@ -1,6 +1,17 @@
 .year-value,
-.amount-value, .store-content__item:hover, .rss-logo:hover, .git-logo:hover, .logo:hover, .popular-label:hover, .button:hover {
+.amount-value, .store-content__item:hover, .rss-logo:hover, .git-logo:hover, .logo:hover, .modal__close-icon:hover, .popular-label:hover, .button:hover {
   transition: all 0.3s ease-out;
+}
+
+.modal::-webkit-scrollbar {
+  width: 5px;
+}
+.modal::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px #cccccc;
+}
+.modal::-webkit-scrollbar-thumb {
+  background: #278d9f;
+  border-radius: 10px;
 }
 
 html {
@@ -185,6 +196,46 @@ h4 {
 }
 .popular-label:hover {
   background-color: #278d9f;
+}
+
+.overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(80, 80, 80, 0.4);
+}
+
+.modal {
+  position: relative;
+  border-radius: 10px;
+  background-color: #cbb77a;
+  width: 675px;
+  min-height: 120px;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.modal__close-icon {
+  position: absolute;
+  top: 30px;
+  right: 26px;
+  width: 50px;
+  height: 50px;
+  background-image: url(../assets/media/cross.svg);
+  background-repeat: no-repeat;
+  background-size: 50px;
+  cursor: pointer;
+}
+.modal__close-icon svg {
+  pointer-events: none;
+}
+.modal__close-icon:hover {
+  opacity: 0.8;
 }
 
 .header {
@@ -650,6 +701,26 @@ input[type=range]::-webkit-slider-thumb {
 .amount-value_max {
   top: -32px;
   left: 75px;
+}
+
+.error__img-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  background: #fff;
+  width: 70%;
+  border-radius: 20px;
+}
+.error__img-wrapper img {
+  height: 200px;
+  width: auto;
+}
+
+.error__title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */
