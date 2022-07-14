@@ -75,6 +75,9 @@ h4 {
 .button_manufacturer.xiaomi {
   background-image: url(../assets/media/xiaomi.svg);
 }
+.button_manufacturer.realme {
+  background-image: url(../assets/media/realme.svg);
+}
 .button_manufacturer.active {
   filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
 }
@@ -129,6 +132,13 @@ h4 {
 }
 .button_color.red {
   background-color: #fd0000;
+}
+.button_color.black {
+  background-color: #121c1e;
+  border: 1px solid #cccccc;
+}
+.button_color.blue {
+  background-color: #1976d2;
 }
 
 .button_reset {

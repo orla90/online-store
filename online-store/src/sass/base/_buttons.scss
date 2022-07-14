@@ -28,6 +28,9 @@
   &.xiaomi {
     background-image: url(../assets/media/xiaomi.svg);
   }
+  &.realme {
+    background-image: url(../assets/media/realme.svg);
+  }
   &.active {
     filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg)
       brightness(83%) contrast(88%);
@@ -83,6 +86,13 @@
   }
   &.red {
     background-color: $color-red;
+  }
+  &.black {
+    background-color: $color-black;
+    border: 1px solid $color-grey;
+  }
+  &.blue {
+    background-color: $color-blue;
   }
 }
 

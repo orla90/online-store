@@ -1,13 +1,12 @@
 import { Card } from "./ts/сard";
-import { data } from "./ts/Data";
 import { CardData } from "./ts/Interface";
+import { data } from "./ts/phonesData";
 
 window.onload = function () {
   console.log("Hello");
 
   // Render Cards
   if (data) {
-    // sortCardByNameAsc(data);
     renderCardsToDom();
   }
 
