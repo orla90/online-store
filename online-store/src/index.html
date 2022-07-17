@@ -33,16 +33,28 @@
               <div class="store-content__manufacturer-filter">
                 <span>Производитель:</span>
                 <ul class="manufacturer-list">
-                  <button class="button button_manufacturer samsung active">
+                  <button
+                    class="button button_manufacturer samsung"
+                    data-manufacturer="samsung"
+                  >
                     Samsung
                   </button>
-                  <button class="button button_manufacturer apple active">
+                  <button
+                    class="button button_manufacturer apple"
+                    data-manufacturer="apple"
+                  >
                     Apple
                   </button>
-                  <button class="button button_manufacturer realme active">
+                  <button
+                    class="button button_manufacturer realme"
+                    data-manufacturer="realme"
+                  >
                     Realme
                   </button>
-                  <button class="button button_manufacturer xiaomi active">
+                  <button
+                    class="button button_manufacturer xiaomi"
+                    data-manufacturer="xiaomi"
+                  >
                     Xiaomi
                   </button>
                 </ul>
@@ -50,19 +62,34 @@
               <div class="store-content__camera-filter">
                 <span>Количество камер:</span>
                 <ul class="camera-amount">
-                  <button class="button button_camera single-camera active">
+                  <button
+                    class="button button_camera five-cameras"
+                    data-camera="fiveCameras"
+                  >
                     5
                   </button>
-                  <button class="button button_camera single-camera active">
+                  <button
+                    class="button button_camera four-cameras"
+                    data-camera="fourCameras"
+                  >
                     4
                   </button>
-                  <button class="button button_camera single-camera active">
+                  <button
+                    class="button button_camera three-cameras"
+                    data-camera="threeCameras"
+                  >
                     3
                   </button>
-                  <button class="button button_camera two-camera active">
+                  <button
+                    class="button button_camera two-cameras"
+                    data-camera="twoCameras"
+                  >
                     2
                   </button>
-                  <button class="button button_camera three-camera active">
+                  <button
+                    class="button button_camera one-camera"
+                    data-camera="oneCamera"
+                  >
                     1
                   </button>
                 </ul>
@@ -70,11 +97,24 @@
               <div class="store-content__color-filter">
                 <span>Цвет:</span>
                 <ul class="colors">
-                  <button class="button button_color white">белый</button>
-                  <button class="button button_color yellow">желтый</button>
-                  <button class="button button_color red">красный</button>
-                  <button class="button button_color black">черный</button>
-                  <button class="button button_color blue">синий</button>
+                  <button class="button button_color white" data-color="white">
+                    белый
+                  </button>
+                  <button
+                    class="button button_color yellow"
+                    data-color="yellow"
+                  >
+                    желтый
+                  </button>
+                  <button class="button button_color red" data-color="red">
+                    красный
+                  </button>
+                  <button class="button button_color black" data-color="black">
+                    черный
+                  </button>
+                  <button class="button button_color blue" data-color="blue">
+                    синий
+                  </button>
                 </ul>
               </div>
               <div class="store-content__popular-filter">
@@ -103,7 +143,10 @@
                   <div class="store-content__amount-numbers">1</div>
                   <div class="amount-slider-wrapper">
                     <div class="amount-slider">
-                      <div class="amount-progress"></div>
+                      <div class="amount-progress">
+                        <div class="progress-button progress-button_min"></div>
+                        <div class="progress-button progress-button_max"></div>
+                      </div>
                       <div class="amount-value amount-value_min hidden"></div>
                       <div class="amount-value amount-value_max hidden"></div>
                     </div>

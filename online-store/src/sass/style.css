@@ -1,5 +1,12 @@
 .year-value,
-.amount-value, .store-content__item:hover, .rss-logo:hover, .git-logo:hover, .logo:hover, .modal__close-icon:hover, .popular-label:hover, .button:hover {
+.amount-value,
+.store-content__item:hover,
+.rss-logo:hover,
+.git-logo:hover,
+.logo:hover,
+.modal__close-icon:hover,
+.popular-label:hover,
+.button:hover {
   transition: all 0.3s ease-out;
 }
 
@@ -90,7 +97,8 @@ h4 {
   background-image: url(../assets/media/realme.svg);
 }
 .button_manufacturer.active {
-  filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+  filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg)
+    brightness(83%) contrast(88%);
 }
 
 .button_camera {
@@ -273,7 +281,8 @@ h4 {
 }
 
 .logo:hover {
-  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg) brightness(93%) contrast(88%);
+  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
+    brightness(93%) contrast(88%);
 }
 
 .layout-3-column {
@@ -371,7 +380,8 @@ h4 {
   width: 23px;
 }
 .git-logo:hover {
-  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg) brightness(93%) contrast(88%);
+  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
+    brightness(93%) contrast(88%);
 }
 
 .rss-logo {
@@ -382,7 +392,8 @@ h4 {
   display: flex;
 }
 .rss-logo:hover {
-  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg) brightness(93%) contrast(88%);
+  filter: invert(38%) sepia(27%) saturate(1077%) hue-rotate(141deg)
+    brightness(93%) contrast(88%);
 }
 
 .main {
@@ -598,7 +609,8 @@ select#sort {
   height: 30px;
   cursor: pointer;
 }
-.ribbon:after, .ribbon:before {
+.ribbon:after,
+.ribbon:before {
   content: "";
   height: 0;
   position: absolute;
@@ -661,7 +673,7 @@ select#sort {
   -webkit-appearance: none;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   height: 17px;
   width: 17px;
   border-radius: 50%;
