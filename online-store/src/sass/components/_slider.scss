@@ -49,12 +49,16 @@
 }
 
 input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  outline: none;
   height: 17px;
   width: 17px;
   border-radius: 50%;
   pointer-events: auto;
-  -webkit-appearance: none;
   background-color: $color-blue;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
 }
 
 .year-value,

@@ -3,7 +3,7 @@ import { CardData, ObjData, OnlyKeys } from './ts/Interface';
 import { data } from './ts/phonesData';
 import { ErrorModal } from './ts/errorModal';
 
-const valueObjDefault: ObjData = {
+const valueObjDefault = {
   minAmountVal: '1',
   maxAmountVal: '20',
   minYearVal: '2000',
@@ -30,6 +30,12 @@ const valueObjDefault: ObjData = {
 
 const valueObjForLocalStorage = (JSON.parse(JSON.stringify(valueObjDefault)) as ObjData);
 const valueObjFromLocalStorage = (JSON.parse(JSON.stringify(valueObjDefault)) as ObjData);
+
+
+export function sum(a: number, b: number) {
+  return a + b;
+}
+// module.exports = sum;
 
 //Generate Modal Windows
 const renderErrorModalWindow = (urlToImg: string, text: string) => {
@@ -377,14 +383,6 @@ const filterCardsByManufacturer = () => {
 };
 
 
-
-
-
-
-
-
-
-
 //Select filters
 const selectClickedManufacturerFilter = (
   clickedManufacturerFilter: EventTarget | null,
@@ -695,6 +693,7 @@ const getAmountRangeValues = () => {
   const maxValueBox = document.querySelector(
     '.amount-slider .amount-value_max',
   );
+
   const amountGap = 1;
   rangeInput.forEach((input) => {
     input.addEventListener('input', (e: Event) => {
@@ -772,6 +771,14 @@ const getYearRangeValues = () => {
         yearInput[1].innerHTML = maxValue.toString();
         valueObjForLocalStorage.minYearVal = minValue.toString();
         valueObjForLocalStorage.maxYearVal = maxValue.toString();
+        valueObjFromLocalStorage.minYearVal = minValue.toString();
+        valueObjFromLocalStorage.maxYearVal = maxValue.toString();
+
+        //   console.log(valueObjForLocalStorage.minYearVal);
+        //   console.log(valueObjForLocalStorage.maxYearVal);
+      
+        //  console.log(valueObjFromLocalStorage.minYearVal);
+        //   console.log(valueObjFromLocalStorage.maxYearVal);
 
         (progress as HTMLDivElement).style.left = `${Math.trunc(
           ((minValue - 2000) * 100) / 22,
@@ -803,7 +810,6 @@ const setLocalStorage = () => {
   localStorage.setItem('minAmountVal', valueObjForLocalStorage.minAmountVal);
   localStorage.setItem('maxAmountVal', valueObjForLocalStorage.maxAmountVal);
   localStorage.setItem('minYearVal', valueObjForLocalStorage.minYearVal);
-  localStorage.setItem('maxYearVal', valueObjForLocalStorage.maxYearVal);
   localStorage.setItem('sortingScheme', valueObjForLocalStorage.sortingScheme);
   localStorage.setItem('samsung', valueObjForLocalStorage.samsung);
   localStorage.setItem('apple', valueObjForLocalStorage.apple);
@@ -820,6 +826,7 @@ const setLocalStorage = () => {
   localStorage.setItem('red', valueObjForLocalStorage.red);
   localStorage.setItem('blue', valueObjForLocalStorage.blue);
   localStorage.setItem('isPopular', valueObjForLocalStorage.isPopular);
+  localStorage.setItem('maxYearVal', valueObjForLocalStorage.maxYearVal);
   localStorage.setItem(
     'activeCards',
     JSON.stringify(valueObjForLocalStorage.activeCards),
@@ -827,6 +834,11 @@ const setLocalStorage = () => {
 };
 
 const addActiveClass = () => {
+  console.log(valueObjForLocalStorage.minYearVal);
+  console.log(valueObjForLocalStorage.maxYearVal);
+
+  console.log(valueObjFromLocalStorage.minYearVal);
+  console.log(valueObjFromLocalStorage.maxYearVal);
   valueObjForLocalStorage.activeCards = valueObjFromLocalStorage.activeCards;
 
   const manufacturers = document.querySelectorAll('.manufacturer-list .button');
@@ -852,6 +864,10 @@ const addActiveClass = () => {
   const maxValueBoxYear = document.querySelector(
     '.year-slider .year-value_max',
   );
+  const thumbYearMin = document.querySelector(
+    '#year-min',
+  );
+  console.log(thumbYearMin);
 
   yearInput[0].innerHTML = valueObjFromLocalStorage.minYearVal.toString();
   yearInput[1].innerHTML = valueObjFromLocalStorage.maxYearVal.toString();
@@ -859,20 +875,35 @@ const addActiveClass = () => {
   (progressYear as HTMLDivElement).style.left = `${Math.trunc(
     ((+valueObjFromLocalStorage.minYearVal - 2000) * 100) / 22,
   )}%`;
+
+  // (thumbYearMin as HTMLDivElement).style.left = `${Math.trunc(
+  //   ((+valueObjFromLocalStorage.minYearVal - 2000) * 100) / 22,
+  // )}%`;
+
   (minValueBoxYear as HTMLDivElement).style.left = `${Math.trunc(
     ((+valueObjFromLocalStorage.minYearVal - 2000) * 100) / 22,
   )}%`;
+
   (minValueBoxYear as HTMLDivElement).innerHTML = valueObjFromLocalStorage.minYearVal.toString();
 
   (progressYear as HTMLDivElement).style.right = `${
     100 - Math.trunc(((+valueObjFromLocalStorage.maxYearVal - 2000) * 100) / 22)
   }%`;
+
+ 
+
   (maxValueBoxYear as HTMLDivElement).style.left = `${Math.trunc(
     ((+valueObjFromLocalStorage.maxYearVal - 2000) * 100) / 22,
   )}%`;
   (maxValueBoxYear as HTMLDivElement).innerHTML = valueObjFromLocalStorage.maxYearVal.toString();
   valueObjForLocalStorage.minYearVal = valueObjFromLocalStorage.minYearVal;
-  valueObjForLocalStorage.maxYearVal = valueObjFromLocalStorage.maxYearVal;
+  // valueObjForLocalStorage.maxYearVal = valueObjFromLocalStorage.maxYearVal;
+
+  // console.log(valueObjFromLocalStorage.minYearVal);
+  // console.log(valueObjFromLocalStorage.maxYearVal);
+
+
+
 
   if (valueObjFromLocalStorage.isPopular === 'true') {
     (popularInput as HTMLInputElement).checked = true;
@@ -899,6 +930,10 @@ const addActiveClass = () => {
   (maxValueBox as HTMLDivElement).innerHTML = valueObjFromLocalStorage.maxAmountVal.toString();
   valueObjForLocalStorage.minAmountVal = valueObjFromLocalStorage.minAmountVal;
   valueObjForLocalStorage.maxAmountVal = valueObjFromLocalStorage.maxAmountVal;
+  
+
+
+  
 
   for (let i = 0; i < manufacturers.length; i++) {
     if (
@@ -1028,7 +1063,6 @@ const addActiveClass = () => {
     });
   });
 
-  console.log(valueObjFromLocalStorage.activeCards.length);
   drawCardsCount(valueObjFromLocalStorage.activeCards.length);
   filterCardsByManufacturer();
 };
@@ -1113,8 +1147,6 @@ const addWindowBeforeunloadHandler = () => {
 };
 
 window.onload = function () {
-  console.log('Hello');
-
   //Set Local Storage
   addWindowBeforeunloadHandler();
 
