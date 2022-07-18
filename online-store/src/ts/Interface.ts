@@ -7,7 +7,7 @@ export interface CardData {
   manufacturer: string;
   color: string;
   cameras: number;
-  isPopular: string | boolean;
+  isPopular: string;
 }
 
 export interface ModalData {
@@ -23,3 +23,37 @@ export interface ErrorData {
   urlToImg: string;
   text: string;
 }
+
+export type ObjData = {
+  minAmountVal: string,
+  maxAmountVal: string,
+  minYearVal: string,
+  maxYearVal: string,
+  sortingScheme: string,
+  samsung: string,
+  apple: string,
+  realme: string,
+  xiaomi: string,
+  fiveCameras: string,
+  fourCameras: string,
+  threeCameras: string,
+  twoCameras: string,
+  oneCamera: string,
+  white: string,
+  yellow: string,
+  black: string,
+  red: string,
+  blue: string,
+  isPopular: string,
+  activeCards: string[],
+};
+
+type ObjStrings = Omit<ObjData, 'activeCards'>;
+
+export type ObjArray = Pick<ObjData, 'activeCards'>;
+
+export type OnlyKeys = keyof ObjStrings;
+
+export type OnlyKey = keyof ObjArray;
+
+export type ModalDataType = string | Element;

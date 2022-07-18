@@ -24,5 +24,6 @@ module.exports = {
     rules: {
       "semi": ["error", "always"],
       "@typescript-eslint/no-explicit-any": 2,
+      "@typescript-eslint/no-non-null-assertion": "off"
     },
   };

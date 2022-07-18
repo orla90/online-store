@@ -20,7 +20,7 @@ export class ErrorModal extends Modal implements ErrorData {
     const error = document.createElement('div');
     error.className = 'error';
 
-    this.text && (template += `<h2 class="error__title">${this.text}</h2>`);
+    if (this.text) template += `<h2 class="error__title">${this.text}</h2>`;
 
     if (this.urlToImg) {
       template += '<div class="error__img-wrapper">';

@@ -1,6 +1,24 @@
 import { CardData } from './Interface';
 
 export class Card implements CardData {
+  id: string;
+
+  title: string;
+
+  urlToImg: string;
+
+  amount: number;
+
+  year: number;
+
+  manufacturer: string;
+
+  color: string;
+
+  cameras: number;
+
+  isPopular: string;
+
   constructor({
     id,
     title,
@@ -20,7 +38,7 @@ export class Card implements CardData {
     manufacturer: string;
     color: string;
     cameras: number;
-    isPopular: string | boolean;
+    isPopular: string;
   }) {
     this.id = id;
     this.title = title;
@@ -33,24 +51,6 @@ export class Card implements CardData {
     this.isPopular = isPopular;
   }
 
-  id: string;
-
-  title: string;
-
-  urlToImg: string;
-
-  amount: number;
-
-  year: number;
-
-  manufacturer: string;
-
-  color: string;
-
-  cameras: number;
-
-  isPopular: string | boolean;
-
   //Card generator
   generateCard() {
     let template = '';
@@ -61,8 +61,7 @@ export class Card implements CardData {
     card.setAttribute('data-amount', this.amount.toString());
     card.setAttribute('data-year', this.year.toString());
 
-    this.title &&
-      (template += `<h3 class="store-content__title">${this.title}</h3>`);
+    if (this.title) template += `<h3 class="store-content__title">${this.title}</h3>`;
 
     if (this.urlToImg) {
       template += '<div class="store-content__img-wrapper">';

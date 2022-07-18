@@ -1,15 +1,15 @@
-import { ModalData } from './Interface';
+import { ModalDataType, ModalData } from './Interface';
 
 export class Modal implements ModalData {
   classes: string;
 
-  modal: Element | null | string;
+  modal: ModalDataType;
 
-  modalContent: Element | null | string;
+  modalContent: ModalDataType;
 
-  modalCloseBtn: Element | null | string;
+  modalCloseBtn: ModalDataType;
 
-  overlay: Element | null | string;
+  overlay: ModalDataType;
 
   constructor(classes: string) {
     this.classes = classes;
@@ -57,7 +57,7 @@ export class Modal implements ModalData {
   }
 
   createDomNode(
-    node: Element | null | string,
+    node: Element | string,
     element: string,
     ...classes: Array<string>
   ) {
@@ -68,26 +68,26 @@ export class Modal implements ModalData {
 
   setContent(content: Node | string) {
     if (typeof content === 'string') {
-      (this.modalContent! as HTMLDivElement).innerHTML = content;
+      (this.modalContent as HTMLDivElement).innerHTML = content;
     } else {
-      (this.modalContent! as HTMLDivElement).innerHTML = '';
+      (this.modalContent as HTMLDivElement).innerHTML = '';
       (this.modalContent as HTMLDivElement).appendChild(content);
     }
   }
 
   appendModalElements() {
-    (this.modal! as HTMLDivElement).append(
+    (this.modal as HTMLDivElement).append(
       this.modalCloseBtn as HTMLDivElement,
     );
-    (this.modal! as HTMLDivElement).append(this.modalContent as HTMLDivElement);
-    (this.overlay! as HTMLDivElement).append(this.modal as HTMLDivElement);
+    (this.modal as HTMLDivElement).append(this.modalContent as HTMLDivElement);
+    (this.overlay as HTMLDivElement).append(this.modal as HTMLDivElement);
   }
 
   bindEvents() {
-    (this.modalCloseBtn! as HTMLDivElement).addEventListener('click', (e) =>
+    (this.modalCloseBtn as HTMLDivElement).addEventListener('click', (e) =>
       this.closeModal(e),
     );
-    (this.overlay! as HTMLDivElement).addEventListener('click', (e) =>
+    (this.overlay as HTMLDivElement).addEventListener('click', (e) =>
       this.closeModal(e),
     );
   }
