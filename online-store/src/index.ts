@@ -27,15 +27,8 @@ const valueObjDefault = {
   activeCards: [],
 };
 
-
 const valueObjForLocalStorage = (JSON.parse(JSON.stringify(valueObjDefault)) as ObjData);
 const valueObjFromLocalStorage = (JSON.parse(JSON.stringify(valueObjDefault)) as ObjData);
-
-
-export function sum(a: number, b: number) {
-  return a + b;
-}
-// module.exports = sum;
 
 //Generate Modal Windows
 const renderErrorModalWindow = (urlToImg: string, text: string) => {
@@ -172,12 +165,14 @@ const sortCards = (cardsArr: Array<Element>) => {
 
 //Add Filters
 const filterCardsByYear = (cardsArr: Array<Element>) => {
+  
   cardsArr.forEach((card) => {
     if (!card.classList.contains('store-content__item_hidden')) {
       card.classList.add('store-content__item_hidden');
     }
   });
   cardsArr.forEach((card) => {
+    console.log(card);
     const year = (card.querySelector('.year-prop') as HTMLDivElement).innerText;
     if (
       parseInt(year) >= +valueObjForLocalStorage.minYearVal &&
