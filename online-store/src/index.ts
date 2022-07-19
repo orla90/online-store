@@ -769,12 +769,6 @@ const getYearRangeValues = () => {
         valueObjFromLocalStorage.minYearVal = minValue.toString();
         valueObjFromLocalStorage.maxYearVal = maxValue.toString();
 
-        //   console.log(valueObjForLocalStorage.minYearVal);
-        //   console.log(valueObjForLocalStorage.maxYearVal);
-      
-        //  console.log(valueObjFromLocalStorage.minYearVal);
-        //   console.log(valueObjFromLocalStorage.maxYearVal);
-
         (progress as HTMLDivElement).style.left = `${Math.trunc(
           ((minValue - 2000) * 100) / 22,
         )}%`;
@@ -871,10 +865,6 @@ const addActiveClass = () => {
     ((+valueObjFromLocalStorage.minYearVal - 2000) * 100) / 22,
   )}%`;
 
-  // (thumbYearMin as HTMLDivElement).style.left = `${Math.trunc(
-  //   ((+valueObjFromLocalStorage.minYearVal - 2000) * 100) / 22,
-  // )}%`;
-
   (minValueBoxYear as HTMLDivElement).style.left = `${Math.trunc(
     ((+valueObjFromLocalStorage.minYearVal - 2000) * 100) / 22,
   )}%`;
@@ -892,13 +882,6 @@ const addActiveClass = () => {
   )}%`;
   (maxValueBoxYear as HTMLDivElement).innerHTML = valueObjFromLocalStorage.maxYearVal.toString();
   valueObjForLocalStorage.minYearVal = valueObjFromLocalStorage.minYearVal;
-  // valueObjForLocalStorage.maxYearVal = valueObjFromLocalStorage.maxYearVal;
-
-  // console.log(valueObjFromLocalStorage.minYearVal);
-  // console.log(valueObjFromLocalStorage.maxYearVal);
-
-
-
 
   if (valueObjFromLocalStorage.isPopular === 'true') {
     (popularInput as HTMLInputElement).checked = true;
