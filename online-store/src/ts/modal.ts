@@ -76,9 +76,7 @@ export class Modal implements ModalData {
   }
 
   appendModalElements() {
-    (this.modal as HTMLDivElement).append(
-      this.modalCloseBtn as HTMLDivElement,
-    );
+    (this.modal as HTMLDivElement).append(this.modalCloseBtn as HTMLDivElement);
     (this.modal as HTMLDivElement).append(this.modalContent as HTMLDivElement);
     (this.overlay as HTMLDivElement).append(this.modal as HTMLDivElement);
   }

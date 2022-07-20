@@ -61,7 +61,8 @@ export class Card implements CardData {
     card.setAttribute('data-amount', this.amount.toString());
     card.setAttribute('data-year', this.year.toString());
 
-    if (this.title) template += `<h3 class="store-content__title">${this.title}</h3>`;
+    if (this.title)
+      template += `<h3 class="store-content__title">${this.title}</h3>`;
 
     if (this.urlToImg) {
       template += '<div class="store-content__img-wrapper">';

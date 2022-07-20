@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   backdrop-filter: blur(3px);
-  background-color: rgba(19, 20, 21, 0.3);
+  background-color: $color-reset;
   border: 2px solid $color-border;
   border-radius: 10px;
   min-width: 260px;

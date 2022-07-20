@@ -98,7 +98,7 @@
 
 .button_reset {
   height: 40px;
-  background-color: rgba(19, 20, 21, 0.3);
+  background-color: $color-reset;
   backdrop-filter: blur(3px);
   border: 1px solid $color-cyan;
   border-radius: 20px;
