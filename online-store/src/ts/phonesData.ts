@@ -1,6 +1,6 @@
 import { CardData } from './Interface';
 
-export const data: CardData[] = [
+export const phonesData: CardData[] = [
   {
     id: '1',
     title: 'Xiaomi Redmi Note 11',

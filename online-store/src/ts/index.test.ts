@@ -9,7 +9,7 @@ import {
   sortNumbersDesc,
   sortStringAsc,
   sortStringDesc,
-} from './tests';
+} from './helpers';
 
 const input = [
   {

@@ -1,7 +1,7 @@
 import { VALUES_FOR_LOCAL_STORAGE } from './data';
 import { generateBasketModal } from './generateModalWindows';
 import { CardData } from './Interface';
-import { data } from './phonesData';
+import { phonesData } from './phonesData';
 import { Card } from './сard';
 
 export const getCardsWrapper = () => {
@@ -20,7 +20,7 @@ export const generateCards = (cardsData: Array<CardData>) => {
 
 export const renderCardsToDom = () => {
   const cardsWrapper = getCardsWrapper();
-  generateCards(data).forEach((card) => {
+  generateCards(phonesData).forEach((card) => {
     cardsWrapper?.append(card.generateCard());
   });
 };

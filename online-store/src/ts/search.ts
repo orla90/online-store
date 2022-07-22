@@ -27,12 +27,12 @@ export const addSearchHandler = () => {
     'search-input',
   ) as HTMLInputElement;
 
-  searchWindow?.addEventListener('input', () => {
+  searchWindow?.addEventListener('change', (e) => {
     const cards = document.querySelectorAll('.store-content__item');
     const filtered = Array.from(cards).filter(
       (card) => !card.classList.contains('store-content__item_hidden'),
     );
-    const val = searchWindow?.value.toLowerCase().trim();
+    const val = ((e.target as HTMLInputElement).value).toLowerCase().trim();
     if (val != '') {
       hideSearchIcon();
       filtered.forEach((card) => {

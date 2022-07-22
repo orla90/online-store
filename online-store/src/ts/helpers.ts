@@ -1,4 +1,4 @@
-type ArrData = {
+type Card = {
   id: number;
   year: string;
   amount: string;
@@ -8,15 +8,15 @@ type ArrData = {
   manufacturer: string;
 };
 
-type ObjStrings = Omit<ArrData, 'id'>;
+type ObjStrings = Omit<Card, 'id'>;
 type OnlyKeys = keyof ObjStrings;
 
 export const filterCardsByYear = (
-  cardsArr: ArrData[],
+  cardsArr: Card[],
   minYearVal: string,
   maxYearVal: string,
 ) => {
-  const arr: Array<ArrData> = [];
+  const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
     if (
       parseInt(card.year) >= +minYearVal &&
@@ -29,11 +29,11 @@ export const filterCardsByYear = (
 };
 
 export const filterCardsByAmount = (
-  cardsArr: ArrData[],
+  cardsArr: Card[],
   minAmountVal: string,
   maxAmountVal: string,
 ) => {
-  const arr: Array<ArrData> = [];
+  const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
     if (
       parseInt(card.amount) >= +minAmountVal &&
@@ -45,24 +45,24 @@ export const filterCardsByAmount = (
   return arr;
 };
 
-export const filterCardsByIsPopular = (cardsArr: ArrData[]) => {
-  const arr: Array<ArrData> = [];
+export const filterCardsByIsPopular = (cardsArr: Card[]) => {
+  const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
     if (card.isPopular === 'true') arr.push(card);
   });
   return arr;
 };
 
-export const filterCardsByColors = (cardsArr: ArrData[], color: string) => {
-  const arr: Array<ArrData> = [];
+export const filterCardsByColors = (cardsArr: Card[], color: string) => {
+  const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
     if (card.color === color) arr.push(card);
   });
   return arr;
 };
 
-export const filterCardsByCameras = (cardsArr: ArrData[], camera: string) => {
-  const arr: Array<ArrData> = [];
+export const filterCardsByCameras = (cardsArr: Card[], camera: string) => {
+  const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
     if (card.camera === camera) arr.push(card);
   });
@@ -70,21 +70,21 @@ export const filterCardsByCameras = (cardsArr: ArrData[], camera: string) => {
 };
 
 export const filterCardsByManufacturer = (
-  cardsArr: ArrData[],
+  cardsArr: Card[],
   manufacturer: string,
 ) => {
-  const arr: Array<ArrData> = [];
+  const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
     if (card.manufacturer === manufacturer) arr.push(card);
   });
   return arr;
 };
 
-export const sortNumbersAsc = (cardsArr: ArrData[], attr: string) => {
+export const sortNumbersAsc = (cardsArr: Card[], attr: OnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (+a[`${attr}` as OnlyKeys]! > +b[`${attr}` as OnlyKeys]!) {
+    if (+a[`${attr}`]! > +b[`${attr}`]!) {
       return 1;
-    } else if (+a[`${attr}` as OnlyKeys]! < +b[`${attr}` as OnlyKeys]!) {
+    } else if (+a[`${attr}`]! < +b[`${attr}`]!) {
       return -1;
     } else {
       return 0;
@@ -93,11 +93,11 @@ export const sortNumbersAsc = (cardsArr: ArrData[], attr: string) => {
   return cardsArr;
 };
 
-export const sortNumbersDesc = (cardsArr: ArrData[], attr: string) => {
+export const sortNumbersDesc = (cardsArr: Card[], attr: OnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (+a[`${attr}` as OnlyKeys]! > +b[`${attr}` as OnlyKeys]!) {
+    if (+a[`${attr}`]! > +b[`${attr}`]!) {
       return -1;
-    } else if (+a[`${attr}` as OnlyKeys]! < +b[`${attr}` as OnlyKeys]!) {
+    } else if (+a[`${attr}`]! < +b[`${attr}`]!) {
       return 1;
     } else {
       return 0;
@@ -106,11 +106,11 @@ export const sortNumbersDesc = (cardsArr: ArrData[], attr: string) => {
   return cardsArr;
 };
 
-export const sortStringAsc = (cardsArr: ArrData[], attr: string) => {
+export const sortStringAsc = (cardsArr: Card[], attr: OnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (a[`${attr}` as OnlyKeys]! > b[`${attr}` as OnlyKeys]!) {
+    if (a[`${attr}`]! > b[`${attr}`]!) {
       return 1;
-    } else if (a[`${attr}` as OnlyKeys]! < b[`${attr}` as OnlyKeys]!) {
+    } else if (a[`${attr}`]! < b[`${attr}`]!) {
       return -1;
     } else {
       return 0;
@@ -119,11 +119,11 @@ export const sortStringAsc = (cardsArr: ArrData[], attr: string) => {
   return cardsArr;
 };
 
-export const sortStringDesc = (cardsArr: ArrData[], attr: string) => {
+export const sortStringDesc = (cardsArr: Card[], attr: OnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (a[`${attr}` as OnlyKeys]! > b[`${attr}` as OnlyKeys]!) {
+    if (a[`${attr}`]! > b[`${attr}`]!) {
       return -1;
-    } else if (a[`${attr}` as OnlyKeys]! < b[`${attr}` as OnlyKeys]!) {
+    } else if (a[`${attr}`]! < b[`${attr}`]!) {
       return 1;
     } else {
       return 0;

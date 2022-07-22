@@ -1,4 +1,4 @@
-import { data } from './ts/phonesData';
+import { phonesData } from './ts/phonesData';
 import { VALUES_FROM_LOCAL_STORAGE } from './ts/data';
 import { addResetHandler, addResetSettingsHandler } from './ts/reset';
 import { setLocalStorage, getLocalStorage } from './ts/localStorage';
@@ -28,7 +28,7 @@ const addWindowBeforeunloadHandler = () => {
 window.onload = function () {
   addWindowBeforeunloadHandler();
 
-  if (data) {
+  if (phonesData) {
     renderCardsToDom();
   }
 
