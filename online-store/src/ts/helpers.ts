@@ -8,8 +8,8 @@ type Card = {
   manufacturer: string;
 };
 
-type ObjStrings = Omit<Card, 'id'>;
-type OnlyKeys = keyof ObjStrings;
+type CardStringValues = Omit<Card, 'id'>;
+type CardOnlyKeys = keyof CardStringValues;
 
 export const filterCardsByYear = (
   cardsArr: Card[],
@@ -80,7 +80,7 @@ export const filterCardsByManufacturer = (
   return arr;
 };
 
-export const sortNumbersAsc = (cardsArr: Card[], attr: OnlyKeys) => {
+export const sortNumbersAsc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
     if (+a[`${attr}`]! > +b[`${attr}`]!) {
       return 1;
@@ -93,7 +93,7 @@ export const sortNumbersAsc = (cardsArr: Card[], attr: OnlyKeys) => {
   return cardsArr;
 };
 
-export const sortNumbersDesc = (cardsArr: Card[], attr: OnlyKeys) => {
+export const sortNumbersDesc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
     if (+a[`${attr}`]! > +b[`${attr}`]!) {
       return -1;
@@ -106,7 +106,7 @@ export const sortNumbersDesc = (cardsArr: Card[], attr: OnlyKeys) => {
   return cardsArr;
 };
 
-export const sortStringAsc = (cardsArr: Card[], attr: OnlyKeys) => {
+export const sortStringAsc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
     if (a[`${attr}`]! > b[`${attr}`]!) {
       return 1;
@@ -119,7 +119,7 @@ export const sortStringAsc = (cardsArr: Card[], attr: OnlyKeys) => {
   return cardsArr;
 };
 
-export const sortStringDesc = (cardsArr: Card[], attr: OnlyKeys) => {
+export const sortStringDesc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
     if (a[`${attr}`]! > b[`${attr}`]!) {
       return -1;
