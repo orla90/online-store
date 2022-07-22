@@ -1,7 +1,6 @@
-import { valueObjForLocalStorage } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from './data';
 import { filterCardsByManufacturer } from './filters';
 
-//Select filters
 export const selectClickedManufacturerFilter = (
   clickedManufacturerFilter: EventTarget | null,
 ) => {
@@ -14,13 +13,13 @@ export const selectClickedManufacturerFilter = (
   ) {
     (clickedManufacturerFilter as HTMLDivElement).classList.remove('active');
     if (manufacturer)
-      valueObjForLocalStorage.filterSettings.manufacturer = valueObjForLocalStorage.filterSettings.manufacturer.filter(
+      VALUES_FOR_LOCAL_STORAGE.filterSettings.manufacturer = VALUES_FOR_LOCAL_STORAGE.filterSettings.manufacturer.filter(
         (el) => el !== manufacturer,
       );
   } else {
     (clickedManufacturerFilter as HTMLDivElement).classList.add('active');
     if (manufacturer)
-      valueObjForLocalStorage.filterSettings.manufacturer.push(manufacturer);
+      VALUES_FOR_LOCAL_STORAGE.filterSettings.manufacturer.push(manufacturer);
   }
   filterCardsByManufacturer();
 };
@@ -34,12 +33,12 @@ export const selectClickedCameraFilter = (
   if ((clickedCameraFilter as HTMLDivElement).classList.contains('active')) {
     (clickedCameraFilter as HTMLDivElement).classList.remove('active');
     if (camera)
-      valueObjForLocalStorage.filterSettings.cameras = valueObjForLocalStorage.filterSettings.cameras.filter(
+      VALUES_FOR_LOCAL_STORAGE.filterSettings.cameras = VALUES_FOR_LOCAL_STORAGE.filterSettings.cameras.filter(
         (el) => el !== camera,
       );
   } else {
     (clickedCameraFilter as HTMLDivElement).classList.add('active');
-    if (camera) valueObjForLocalStorage.filterSettings.cameras.push(camera);
+    if (camera) VALUES_FOR_LOCAL_STORAGE.filterSettings.cameras.push(camera);
   }
   filterCardsByManufacturer();
 };
@@ -53,12 +52,12 @@ export const selectClickedColorFilter = (
   if ((clickedColorFilter as HTMLDivElement).classList.contains('active')) {
     (clickedColorFilter as HTMLDivElement).classList.remove('active');
     if (color)
-      valueObjForLocalStorage.filterSettings.colors = valueObjForLocalStorage.filterSettings.colors.filter(
+      VALUES_FOR_LOCAL_STORAGE.filterSettings.colors = VALUES_FOR_LOCAL_STORAGE.filterSettings.colors.filter(
         (el) => el !== color,
       );
   } else {
     (clickedColorFilter as HTMLDivElement).classList.add('active');
-    if (color) valueObjForLocalStorage.filterSettings.colors.push(color);
+    if (color) VALUES_FOR_LOCAL_STORAGE.filterSettings.colors.push(color);
   }
   filterCardsByManufacturer();
 };

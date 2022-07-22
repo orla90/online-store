@@ -1,7 +1,6 @@
-import { valueObjForLocalStorage } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from './data';
 import { generateAbsentModal } from './generateModalWindows';
 
-// Functions for sorting
 const insertAfter = (elem: Element, refElem: Element) => {
   return refElem.parentNode?.insertBefore(elem, refElem.nextSibling);
 };
@@ -87,27 +86,27 @@ export const sortCards = (cardsArr: Array<Element>) => {
     generateAbsentModal();
   }
 
-  if (valueObjForLocalStorage.sortingScheme === 'sort-by-name-asc') {
+  if (VALUES_FOR_LOCAL_STORAGE.sortingScheme === 'sort-by-name-asc') {
     sortStringAsc(parent, 'data-title');
   }
 
-  if (valueObjForLocalStorage.sortingScheme === 'sort-by-name-desc') {
+  if (VALUES_FOR_LOCAL_STORAGE.sortingScheme === 'sort-by-name-desc') {
     sortStringDesc(parent, 'data-title');
   }
 
-  if (valueObjForLocalStorage.sortingScheme === 'ascending-amount') {
+  if (VALUES_FOR_LOCAL_STORAGE.sortingScheme === 'ascending-amount') {
     sortNumbersAsc(parent, 'data-amount');
   }
 
-  if (valueObjForLocalStorage.sortingScheme === 'descending-amount') {
+  if (VALUES_FOR_LOCAL_STORAGE.sortingScheme === 'descending-amount') {
     sortNumbersDesc(parent, 'data-amount');
   }
 
-  if (valueObjForLocalStorage.sortingScheme === 'ascending-year') {
+  if (VALUES_FOR_LOCAL_STORAGE.sortingScheme === 'ascending-year') {
     sortNumbersAsc(parent, 'data-year');
   }
 
-  if (valueObjForLocalStorage.sortingScheme === 'descending-year') {
+  if (VALUES_FOR_LOCAL_STORAGE.sortingScheme === 'descending-year') {
     sortNumbersDesc(parent, 'data-year');
   }
 };

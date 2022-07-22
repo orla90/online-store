@@ -1,6 +1,5 @@
 import { ErrorModal } from './errorModal';
 
-//Generate Modal Windows
 const renderErrorModalWindow = (urlToImg: string, text: string) => {
   const modal = new ErrorModal('modal', { urlToImg, text });
   modal.renderErrorModal();

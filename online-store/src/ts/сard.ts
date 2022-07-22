@@ -51,7 +51,6 @@ export class Card implements CardData {
     this.isPopular = isPopular;
   }
 
-  //Card generator
   generateCard() {
     let template = '';
     const card = document.createElement('div');

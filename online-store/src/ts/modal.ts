@@ -20,7 +20,6 @@ export class Modal implements ModalData {
   }
 
   buildModal(content: Node | string) {
-    //Overlay
     this.overlay = this.createDomNode(
       this.overlay,
       'div',
@@ -28,17 +27,14 @@ export class Modal implements ModalData {
       'overlay_modal',
     );
 
-    //Modal
     this.modal = this.createDomNode(this.modal, 'div', 'modal', this.classes);
 
-    //Modal content
     this.modalContent = this.createDomNode(
       this.modalContent,
       'div',
       'modal__content',
     );
 
-    //Close Button
     this.modalCloseBtn = this.createDomNode(
       this.modalCloseBtn,
       'span',
@@ -49,10 +45,8 @@ export class Modal implements ModalData {
 
     this.appendModalElements();
 
-    // Bind Events
     this.bindEvents();
 
-    //Open Modal
     this.openModal();
   }
 

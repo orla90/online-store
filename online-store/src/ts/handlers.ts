@@ -1,4 +1,4 @@
-import { valueObjForLocalStorage } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from './data';
 import { filterCardsByManufacturer } from './filters';
 import { selectClickedCard } from './generateCards';
 import { generateBasketModal } from './generateModalWindows';
@@ -8,7 +8,6 @@ import {
   selectClickedManufacturerFilter,
 } from './selectFilters';
 
-// Add Filters Handlers
 export const addManufacturerClickHandler = () => {
   document
     .querySelector('.manufacturer-list')
@@ -46,20 +45,18 @@ export const addIsPopularClickHandler = () => {
   });
 };
 
-//Add Sort Handler
 export const addSortHandler = () => {
   const sortOptions = document.getElementById('sort');
   sortOptions?.addEventListener(
     'change',
     function () {
-      valueObjForLocalStorage.sortingScheme = (this as HTMLSelectElement).value;
+      VALUES_FOR_LOCAL_STORAGE.sortingScheme = (this as HTMLSelectElement).value;
       filterCardsByManufacturer();
     },
     false,
   );
 };
 
-//Add Cards Handler
 export const addCardClickHandler = () => {
   document.querySelectorAll('.store-content__item').forEach((item) => {
     item?.addEventListener('click', (e) => {

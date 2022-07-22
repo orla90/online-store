@@ -1,7 +1,6 @@
-import { valueObjForLocalStorage } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from './data';
 import { sortCards } from './sort';
 
-//Add Filters
 export const filterCardsByYear = (cardsArr: Array<Element>) => {
   cardsArr.forEach((card) => {
     if (!card.classList.contains('store-content__item_hidden')) {
@@ -11,8 +10,8 @@ export const filterCardsByYear = (cardsArr: Array<Element>) => {
   cardsArr.forEach((card) => {
     const year = (card.querySelector('.year-prop') as HTMLDivElement).innerText;
     if (
-      parseInt(year) >= +valueObjForLocalStorage.rangeSettings.year[0] &&
-      parseInt(year) <= +valueObjForLocalStorage.rangeSettings.year[1]
+      parseInt(year) >= +VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[0] &&
+      parseInt(year) <= +VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[1]
     ) {
       card.classList.remove('store-content__item_hidden');
     }
@@ -34,8 +33,8 @@ export const filterCardsByAmount = (cardsArr: Array<Element>) => {
     const amount = (card.querySelector('.amount-prop') as HTMLDivElement)
       .innerText;
     if (
-      parseInt(amount) >= +valueObjForLocalStorage.rangeSettings.amount[0] &&
-      parseInt(amount) <= +valueObjForLocalStorage.rangeSettings.amount[1]
+      parseInt(amount) >= +VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[0] &&
+      parseInt(amount) <= +VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[1]
     ) {
       card.classList.remove('store-content__item_hidden');
     }
@@ -55,10 +54,10 @@ export const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
     '#popular-input:checked',
   );
 
-  valueObjForLocalStorage.filterSettings.isPopular = 'false';
+  VALUES_FOR_LOCAL_STORAGE.filterSettings.isPopular = 'false';
 
   if (isPopularButtonChecked.length !== 0) {
-    valueObjForLocalStorage.filterSettings.isPopular = 'true';
+    VALUES_FOR_LOCAL_STORAGE.filterSettings.isPopular = 'true';
 
     cardsArr.forEach((card) => {
       if (!card.classList.contains('store-content__item_hidden')) {
@@ -79,7 +78,7 @@ export const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
     );
     filterCardsByAmount(cardsFilteredByIsPopular);
   } else {
-    valueObjForLocalStorage.filterSettings.isPopular = 'false';
+    VALUES_FOR_LOCAL_STORAGE.filterSettings.isPopular = 'false';
     filterCardsByAmount(cardsArr);
   }
 };

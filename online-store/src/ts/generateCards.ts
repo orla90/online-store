@@ -1,10 +1,9 @@
-import { valueObjForLocalStorage } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from './data';
 import { generateBasketModal } from './generateModalWindows';
 import { CardData } from './Interface';
 import { data } from './phonesData';
 import { Card } from './сard';
 
-//Generate Cards
 export const getCardsWrapper = () => {
   const cardsContainer = document.querySelector('.store-content__wrapper');
   (cardsContainer as HTMLDivElement).innerHTML = '';
@@ -42,7 +41,7 @@ export const countClickedCards = () => {
     const id = element.getAttribute('data-id');
     activeCardsArray.push(id!);
   });
-  valueObjForLocalStorage.activeCards = activeCardsArray;
+  VALUES_FOR_LOCAL_STORAGE.activeCards = activeCardsArray;
   drawCardsCount(cardsCount.length);
 };
 

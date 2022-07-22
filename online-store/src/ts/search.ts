@@ -1,6 +1,5 @@
 import { generateAbsentModal } from './generateModalWindows';
 
-//Toggle Search Icons
 const hideSearchIcon = () => {
   const searchImg = document.querySelector(
     '.store-content__search-window .search-img',
@@ -23,7 +22,6 @@ const displaySearchIcon = () => {
   crossImg?.classList.add('hidden');
 };
 
-//Add Search Handler
 export const addSearchHandler = () => {
   const searchWindow = document.getElementById(
     'search-input',

@@ -1,6 +1,6 @@
 import { StorageData } from './Interface';
 
-export const valueObjDefault = {
+export const VALUES_DEFAULT = {
   filterSettings: {
     manufacturer: [],
     cameras: [],
@@ -15,10 +15,10 @@ export const valueObjDefault = {
   activeCards: [],
 };
 
-export const valueObjForLocalStorage = JSON.parse(
-  JSON.stringify(valueObjDefault),
+export const VALUES_FOR_LOCAL_STORAGE = JSON.parse(
+  JSON.stringify(VALUES_DEFAULT),
 ) as StorageData;
 
-export const valueObjFromLocalStorage = JSON.parse(
-  JSON.stringify(valueObjDefault),
+export const VALUES_FROM_LOCAL_STORAGE = JSON.parse(
+  JSON.stringify(VALUES_DEFAULT),
 ) as StorageData;
