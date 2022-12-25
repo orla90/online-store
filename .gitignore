@@ -109,3 +109,7 @@ dist
 
 # CSS build files
 online-store/src/sass/style.css
+
+# .DS_Store
+server
+.DS_Store

@@ -7,14 +7,14 @@ const renderErrorModalWindow = (urlToImg: string, text: string) => {
 
 export const generateAbsentModal = () => {
   renderErrorModalWindow(
-    '../src/assets/media/dog404.jpeg',
-    'Извините, совпадений не обнаружено',
+    '../assets/media/dog404.jpeg',
+    'Извините, совпадений не обнаружено'
   );
 };
 
 export const generateBasketModal = () => {
   renderErrorModalWindow(
-    '../src/assets/media/dog.jpeg',
-    'Извините, все слоты заполнены',
+    '../assets/media/dog.jpeg',
+    'Извините, все слоты заполнены'
   );
 };

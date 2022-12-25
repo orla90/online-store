@@ -1,29 +1,35 @@
 module.exports = {
-    root: true,
-    env: {
-      browser: true,
-      es2021: true,
-      node: true,
-    },
-    extends: [
-      'airbnb-typescript/base',
-      'eslint:recommended',
-      'plugin:@typescript-eslint/recommended',
-      "plugin:@typescript-eslint/recommended-requiring-type-checking"
-    ],
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-      project: './tsconfig.json',
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
-    plugins: [
-      '@typescript-eslint',
-      'import'
-    ],
-    rules: {
-      "semi": ["error", "always"],
-      "@typescript-eslint/no-explicit-any": 2,
-      "@typescript-eslint/no-non-null-assertion": "off"
-    },
-  };
+  plugins: ['import', '@typescript-eslint', 'jest'],
+
+  extends: [
+    'airbnb-typescript/base',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'eslint:recommended',
+    'prettier',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    project: ['tsconfig.json'],
+    tsconfigRootDir: __dirname,
+  },
+  env: {
+    es6: true,
+    browser: true,
+    node: true,
+    'jest/globals': true,
+  },
+  rules: {
+    'no-debugger': 'off',
+    'no-console': 0,
+    'class-methods-use-this': 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
+    'no-new': 1,
+    'max-lines-per-function': ['error', 85],
+  },
+  globals: {
+    NodeJS: true,
+  },
+};
