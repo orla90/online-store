@@ -1,4 +1,13 @@
-# orla90-JSFE2022Q1
-Private repository for @orla90
+# Online store
+Responsive online store of phones with the ability to filter and sort.
 
-CV: https://orla90.github.io/rsschool-cv/
+### Deploy
+[Online-store](https://orla90.github.io/online-store/)
+
+### Stack
+- [Typescript](https://www.typescriptlang.org/)
+- [Webpack](https://webpack.js.org/)
+- [SCSS](https://sass-lang.com/)
+- [Jest](https://jestjs.io/)
+- [Eslint airbnb](https://eslint.org/)
+- [Prettier](https://prettier.io/)
