@@ -1,0 +1,27 @@
+.layout-3-column {
+  @include columns($width: 32%, $justify: space-between);
+  margin: 20px 0 30px;
+  width: 100%;
+  @media (max-width: $tablet-big-width) { 
+    @include columns($width: 100%, $justify: space-between);
+  }
+}
+
+.layout-5-column {
+  @include grid-columns($width: 96%, $repeat: repeat(5, 1fr));
+  @media (max-width: $content-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(4, 1fr));
+  }
+  @media (max-width: $pc-small-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(3, 1fr));
+  }
+  @media (max-width: $tablet-big-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(2, 1fr));
+  }
+  @media (max-width: $tablet-width) { 
+    @include grid-columns($width: 70%, $repeat: repeat(1, 1fr));
+  }
+  @media (max-width: $mobile-width) { 
+    @include grid-columns($width: 96%, $repeat: repeat(1, 1fr));
+  }
+}

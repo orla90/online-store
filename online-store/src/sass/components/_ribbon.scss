@@ -1,0 +1,23 @@
+.ribbon {
+  display: none;
+  position: absolute;
+  background: $color-beige;
+  bottom: 15px;
+  left: -8px;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+  &:after,
+  &:before {
+    content: "";
+    height: 0;
+    position: absolute;
+    width: 0;
+  }
+  &:after {
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid $color-beige;
+    border-top: 15px solid transparent;
+    right: -15px;
+  }
+}

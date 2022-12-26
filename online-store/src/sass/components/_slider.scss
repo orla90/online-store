@@ -1,0 +1,94 @@
+.store-content__amount-slider,
+.store-content__year-slider {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.amount-slider-wrapper,
+.year-slider-wrapper {
+  width: 100%;
+}
+
+.amount-slider,
+.year-slider {
+  position: relative;
+  border-radius: 5px;
+  background-color: $color-slider;
+  height: 4px;
+}
+
+.amount-slider .amount-progress,
+.year-slider .year-progress {
+  height: 5px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  border-radius: 5px;
+  background-color: $color-blue;
+}
+
+.amount-range-input,
+.year-range-input {
+  position: relative;
+}
+
+.amount-range-input input,
+.year-range-input input {
+  position: absolute;
+  top: -5px;
+  left: -30px;
+  height: 5px;
+  width: 100%;
+  margin-left: 30px;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  outline: none;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  pointer-events: auto;
+  background-color: $color-blue;
+  cursor: ew-resize;
+  position: relative;
+}
+
+.year-value,
+.amount-value {
+  display: flex;
+  height: 25px;
+  line-height: 21px;
+  justify-content: center;
+  width: 35px;
+  position: absolute;
+  border: 2px solid $color-grey;
+  top: -32px;
+  left: 5px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  background-color: $color-semitransparent;
+  @extend %transition;
+  &.hidden {
+    display: none;
+  }
+}
+
+.year-value_min,
+.amount-value_min {
+  top: -32px;
+  left: 5px;
+}
+
+.year-value_max,
+.amount-value_max {
+  top: -32px;
+  left: 75px;
+}

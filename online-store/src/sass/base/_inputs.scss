@@ -1,0 +1,18 @@
+#popular-input {
+  display: none;
+}
+
+.popular-label {
+  background-color: $color-semitransparent;
+  backdrop-filter: blur(3px);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  margin: 0 0 0 20px;
+  &:hover {
+    @extend %transition;
+    background-color: $color-cyan;
+  }
+}
