@@ -1,4 +1,4 @@
-import { VALUES_FOR_LOCAL_STORAGE, VALUES_FROM_LOCAL_STORAGE } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from './data';
 import { filterCardsByManufacturer } from './filters';
 
 export const getAmountRangeValues = () => {
@@ -7,14 +7,14 @@ export const getAmountRangeValues = () => {
     +rangeInput[0].getAttribute('max')! - +rangeInput[0].getAttribute('min')!;
 
   const amountInput = document.querySelectorAll(
-    '.store-content__amount-numbers',
+    '.store-content__amount-numbers'
   );
   const progress = document.querySelector('.amount-slider .amount-progress');
   const minValueBox = document.querySelector(
-    '.amount-slider .amount-value_min',
+    '.amount-slider .amount-value_min'
   );
   const maxValueBox = document.querySelector(
-    '.amount-slider .amount-value_max',
+    '.amount-slider .amount-value_max'
   );
 
   const amountGap = 1;
@@ -22,6 +22,8 @@ export const getAmountRangeValues = () => {
     input.addEventListener('input', (e: Event) => {
       const minValue = parseInt((rangeInput[0] as HTMLInputElement).value),
         maxValue = parseInt((rangeInput[1] as HTMLInputElement).value);
+
+      console.log(minValue);
 
       if (maxValue - minValue < amountGap) {
         if ((<HTMLTextAreaElement>e.target).className === 'amount-range-min') {
@@ -40,19 +42,19 @@ export const getAmountRangeValues = () => {
         amountInput[1].innerHTML = maxValue.toString();
         VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[0] = minValue.toString();
         VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[1] = maxValue.toString();
-
         (progress as HTMLDivElement).style.left = `${Math.trunc(
-          ((minValue - 1) * 100) / amountValuesDiff,
+          (minValue * 100) / amountValuesDiff
         )}%`;
+
         (minValueBox as HTMLDivElement).style.left = `${Math.trunc(
-          ((minValue - 1) * 100) / amountValuesDiff,
+          (minValue * 100) / amountValuesDiff
         )}%`;
         (minValueBox as HTMLDivElement).innerHTML = minValue.toString();
         (progress as HTMLDivElement).style.right = `${
-          100 - Math.trunc(((maxValue - 1) * 100) / amountValuesDiff)
+          100 - Math.trunc((maxValue * 100) / amountValuesDiff)
         }%`;
         (maxValueBox as HTMLDivElement).style.left = `${Math.trunc(
-          ((maxValue - 1) * 100) / amountValuesDiff,
+          (maxValue * 100) / amountValuesDiff
         )}%`;
         (maxValueBox as HTMLDivElement).innerHTML = maxValue.toString();
         filterCardsByManufacturer();
@@ -96,14 +98,12 @@ export const getYearRangeValues = () => {
         yearInput[1].innerHTML = maxValue.toString();
         VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[0] = minValue.toString();
         VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[1] = maxValue.toString();
-        VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] = minValue.toString();
-        VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] = maxValue.toString();
 
         (progress as HTMLDivElement).style.left = `${Math.trunc(
-          ((minValue - 2000) * 100) / yearValuesDiff,
+          ((minValue - 2000) * 100) / yearValuesDiff
         )}%`;
         (minValueBox as HTMLDivElement).style.left = `${Math.trunc(
-          ((minValue - 2000) * 100) / yearValuesDiff,
+          ((minValue - 2000) * 100) / yearValuesDiff
         )}%`;
         (minValueBox as HTMLDivElement).innerHTML = minValue.toString();
 
@@ -111,7 +111,7 @@ export const getYearRangeValues = () => {
           100 - Math.trunc(((maxValue - 2000) * 100) / yearValuesDiff)
         }%`;
         (maxValueBox as HTMLDivElement).style.left = `${Math.trunc(
-          ((maxValue - 2000) * 100) / yearValuesDiff,
+          ((maxValue - 2000) * 100) / yearValuesDiff
         )}%`;
         (maxValueBox as HTMLDivElement).innerHTML = maxValue.toString();
         filterCardsByManufacturer();

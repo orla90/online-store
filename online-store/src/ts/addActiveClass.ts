@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { VALUES_FOR_LOCAL_STORAGE, VALUES_FROM_LOCAL_STORAGE } from './data';
 
 export const addActiveClass = () => {
@@ -7,34 +8,40 @@ export const addActiveClass = () => {
   const colors = document.querySelectorAll('.colors .button');
   const popularInput = document.querySelector('#popular-input');
   const amountInput = document.querySelectorAll(
-    '.store-content__amount-numbers',
+    '.store-content__amount-numbers'
   );
   const progress = document.querySelector('.amount-slider .amount-progress');
   const minValueBox = document.querySelector(
-    '.amount-slider .amount-value_min',
+    '.amount-slider .amount-value_min'
   );
   const maxValueBox = document.querySelector(
-    '.amount-slider .amount-value_max',
+    '.amount-slider .amount-value_max'
   );
 
   const yearInput = document.querySelectorAll('.store-content__year-numbers');
   const progressYear = document.querySelector('.year-slider .year-progress');
   const minValueBoxYear = document.querySelector(
-    '.year-slider .year-value_min',
+    '.year-slider .year-value_min'
   );
   const maxValueBoxYear = document.querySelector(
-    '.year-slider .year-value_max',
+    '.year-slider .year-value_max'
   );
 
   yearInput[0].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0].toString();
   yearInput[1].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1].toString();
+  (document.getElementsByClassName(
+    'year-range-min'
+  )[0] as HTMLInputElement).value = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0].toString();
+  (document.getElementsByClassName(
+    'year-range-max'
+  )[0] as HTMLInputElement).value = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1].toString();
 
   (progressYear as HTMLDivElement).style.left = `${Math.trunc(
-    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - 2000) * 100) / 22,
+    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - 2000) * 100) / 22
   )}%`;
 
   (minValueBoxYear as HTMLDivElement).style.left = `${Math.trunc(
-    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - 2000) * 100) / 22,
+    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - 2000) * 100) / 22
   )}%`;
 
   (minValueBoxYear as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0].toString();
@@ -42,16 +49,18 @@ export const addActiveClass = () => {
   (progressYear as HTMLDivElement).style.right = `${
     100 -
     Math.trunc(
-      ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - 2000) * 100) / 22,
+      ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - 2000) * 100) / 22
     )
   }%`;
 
   (maxValueBoxYear as HTMLDivElement).style.left = `${Math.trunc(
-    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - 2000) * 100) / 22,
+    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - 2000) * 100) / 22
   )}%`;
   (maxValueBoxYear as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1].toString();
   VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[0] =
     VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0];
+  VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[1] =
+    VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1];
 
   if (VALUES_FROM_LOCAL_STORAGE.filterSettings.isPopular === 'true') {
     (popularInput as HTMLInputElement).checked = true;
@@ -59,13 +68,19 @@ export const addActiveClass = () => {
 
   amountInput[0].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0].toString();
   amountInput[1].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1].toString();
+  (document.getElementsByClassName(
+    'amount-range-min'
+  )[0] as HTMLInputElement).value = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0].toString();
+  (document.getElementsByClassName(
+    'amount-range-max'
+  )[0] as HTMLInputElement).value = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1].toString();
 
   (progress as HTMLDivElement).style.left = `${Math.trunc(
-    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / 20,
+    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / 20
   )}%`;
 
   (minValueBox as HTMLDivElement).style.left = `${Math.trunc(
-    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / 20,
+    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / 20
   )}%`;
   (minValueBox as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0].toString();
   (progress as HTMLDivElement).style.right = `${
@@ -74,7 +89,7 @@ export const addActiveClass = () => {
   }%`;
 
   (maxValueBox as HTMLDivElement).style.left = `${Math.trunc(
-    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1] * 100) / 20,
+    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1] * 100) / 20
   )}%`;
   (maxValueBox as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1].toString();
   VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[0] =
@@ -90,7 +105,7 @@ export const addActiveClass = () => {
     ) {
       if (
         manufacturers[i].classList.contains(
-          VALUES_FROM_LOCAL_STORAGE.filterSettings.manufacturer[j],
+          VALUES_FROM_LOCAL_STORAGE.filterSettings.manufacturer[j]
         )
       ) {
         manufacturers[i].classList.add('active');
@@ -99,7 +114,7 @@ export const addActiveClass = () => {
   }
 
   VALUES_FOR_LOCAL_STORAGE.filterSettings.manufacturer = JSON.parse(
-    JSON.stringify(VALUES_FROM_LOCAL_STORAGE.filterSettings.manufacturer),
+    JSON.stringify(VALUES_FROM_LOCAL_STORAGE.filterSettings.manufacturer)
   ) as Array<string>;
 
   for (let i = 0; i < cameras.length; i++) {
@@ -116,7 +131,7 @@ export const addActiveClass = () => {
   }
 
   VALUES_FOR_LOCAL_STORAGE.filterSettings.cameras = JSON.parse(
-    JSON.stringify(VALUES_FROM_LOCAL_STORAGE.filterSettings.cameras),
+    JSON.stringify(VALUES_FROM_LOCAL_STORAGE.filterSettings.cameras)
   ) as Array<string>;
 
   for (let i = 0; i < colors.length; i++) {
@@ -127,7 +142,7 @@ export const addActiveClass = () => {
     ) {
       if (
         colors[i].classList.contains(
-          VALUES_FROM_LOCAL_STORAGE.filterSettings.colors[j],
+          VALUES_FROM_LOCAL_STORAGE.filterSettings.colors[j]
         )
       ) {
         colors[i].classList.add('active');
@@ -146,7 +161,7 @@ export const addActiveClass = () => {
     VALUES_FROM_LOCAL_STORAGE.filterSettings.colors;
 
   const cards = document.querySelectorAll(
-    '.layout-5-column .store-content__item',
+    '.layout-5-column .store-content__item'
   );
   cards.forEach((card) => {
     VALUES_FROM_LOCAL_STORAGE.activeCards.forEach((item: string) => {

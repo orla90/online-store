@@ -48,7 +48,7 @@
   -webkit-appearance: none;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   outline: none;
   height: 17px;
@@ -56,7 +56,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   pointer-events: auto;
   background-color: $color-blue;
-  cursor: pointer;
+  cursor: ew-resize;
   position: relative;
 }
 
