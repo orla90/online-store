@@ -1,4 +1,4 @@
-import { CardData } from './Interface';
+import { CardData } from '../interfaces/Interface';
 
 export class Card implements CardData {
   id: string;

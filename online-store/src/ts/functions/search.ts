@@ -1,11 +1,11 @@
-import { generateAbsentModal } from './generateModalWindows';
+import { generateAbsentModal } from '../modalWindows/generateModalWindows';
 
 const hideSearchIcon = () => {
   const searchImg = document.querySelector(
-    '.store-content__search-window .search-img',
+    '.store-content__search-window .search-img'
   );
   const crossImg = document.querySelector(
-    '.store-content__search-window .clear-img',
+    '.store-content__search-window .clear-img'
   );
   searchImg?.classList.add('hidden');
   crossImg?.classList.remove('hidden');
@@ -13,10 +13,10 @@ const hideSearchIcon = () => {
 
 const displaySearchIcon = () => {
   const searchImg = document.querySelector(
-    '.store-content__search-window .search-img',
+    '.store-content__search-window .search-img'
   );
   const crossImg = document.querySelector(
-    '.store-content__search-window .clear-img',
+    '.store-content__search-window .clear-img'
   );
   searchImg?.classList.remove('hidden');
   crossImg?.classList.add('hidden');
@@ -24,15 +24,15 @@ const displaySearchIcon = () => {
 
 export const addSearchHandler = () => {
   const searchWindow = document.getElementById(
-    'search-input',
+    'search-input'
   ) as HTMLInputElement;
 
   searchWindow?.addEventListener('change', (e) => {
     const cards = document.querySelectorAll('.store-content__item');
     const filtered = Array.from(cards).filter(
-      (card) => !card.classList.contains('store-content__item_hidden'),
+      (card) => !card.classList.contains('store-content__item_hidden')
     );
-    const val = ((e.target as HTMLInputElement).value).toLowerCase().trim();
+    const val = (e.target as HTMLInputElement).value.toLowerCase().trim();
     if (val != '') {
       hideSearchIcon();
       filtered.forEach((card) => {
@@ -44,7 +44,7 @@ export const addSearchHandler = () => {
         }
       });
       const twiceFiltered = filtered.filter(
-        (card) => !card.classList.contains('hide'),
+        (card) => !card.classList.contains('hide')
       );
       if (twiceFiltered.length === 0) {
         generateAbsentModal();
@@ -60,16 +60,16 @@ export const addSearchHandler = () => {
 
 export const addClearIconHandler = () => {
   const searchWindow = document.getElementById(
-    'search-input',
+    'search-input'
   ) as HTMLInputElement;
   const crossImg = document.querySelector(
-    '.store-content__search-window .clear-img',
+    '.store-content__search-window .clear-img'
   );
   crossImg?.addEventListener('click', () => {
     searchWindow.value = '';
     const cards = document.querySelectorAll('.store-content__item');
     const filtered = Array.from(cards).filter(
-      (card) => !card.classList.contains('store-content__item_hidden'),
+      (card) => !card.classList.contains('store-content__item_hidden')
     );
     filtered.forEach((card) => {
       card.classList.remove('hide');

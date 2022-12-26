@@ -1,7 +1,7 @@
-import { VALUES_FOR_LOCAL_STORAGE } from './data';
-import { generateBasketModal } from './generateModalWindows';
-import { CardData } from './Interface';
-import { phonesData } from './phonesData';
+import { VALUES_FOR_LOCAL_STORAGE } from '../../store/data';
+import { generateBasketModal } from '../modalWindows/generateModalWindows';
+import { CardData } from '../interfaces/Interface';
+import { PHONES_DATA } from '../../phonesData';
 import { Card } from './сard';
 
 export const getCardsWrapper = () => {
@@ -20,7 +20,7 @@ export const generateCards = (cardsData: Array<CardData>) => {
 
 export const renderCardsToDom = () => {
   const cardsWrapper = getCardsWrapper();
-  generateCards(phonesData).forEach((card) => {
+  generateCards(PHONES_DATA).forEach((card) => {
     cardsWrapper?.append(card.generateCard());
   });
 };
@@ -38,8 +38,8 @@ export const countClickedCards = () => {
   const cardsCount = document.querySelectorAll('.store-content__item.active');
   const activeCardsArray: Array<string> = [];
   cardsCount.forEach((element) => {
-    const id = element.getAttribute('data-id');
-    activeCardsArray.push(id!);
+    const id = element.getAttribute('data-id') as string;
+    activeCardsArray.push(id);
   });
   VALUES_FOR_LOCAL_STORAGE.activeCards = activeCardsArray;
   drawCardsCount(cardsCount.length);

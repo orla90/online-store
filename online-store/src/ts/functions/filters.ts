@@ -1,4 +1,4 @@
-import { VALUES_FOR_LOCAL_STORAGE } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from '../../store/data';
 import { sortCards } from './sort';
 
 export const filterCardsByYear = (cardsArr: Array<Element>) => {
@@ -21,7 +21,7 @@ export const filterCardsByYear = (cardsArr: Array<Element>) => {
 
 export const filterCardsByAmount = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
-    '.layout-5-column .store-content__item',
+    '.layout-5-column .store-content__item'
   );
   cardsArr.forEach((card) => {
     if (!card.classList.contains('store-content__item_hidden')) {
@@ -40,18 +40,18 @@ export const filterCardsByAmount = (cardsArr: Array<Element>) => {
     }
   });
   const cardsFilteredByAmount = Array.from(cards).filter(
-    (card) => !card.classList.contains('store-content__item_hidden'),
+    (card) => !card.classList.contains('store-content__item_hidden')
   );
   filterCardsByYear(cardsFilteredByAmount);
 };
 
 export const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
-    '.layout-5-column .store-content__item',
+    '.layout-5-column .store-content__item'
   );
 
   const isPopularButtonChecked = document.querySelectorAll(
-    '#popular-input:checked',
+    '#popular-input:checked'
   );
 
   VALUES_FOR_LOCAL_STORAGE.filterSettings.isPopular = 'false';
@@ -67,14 +67,14 @@ export const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
 
     cardsArr.forEach((card) => {
       const isPopularProp = (card.querySelector(
-        '.popular-prop',
+        '.popular-prop'
       ) as HTMLDivElement).innerText;
       if (isPopularProp === 'да') {
         card.classList.remove('store-content__item_hidden');
       }
     });
     const cardsFilteredByIsPopular = Array.from(cards).filter(
-      (card) => !card.classList.contains('store-content__item_hidden'),
+      (card) => !card.classList.contains('store-content__item_hidden')
     );
     filterCardsByAmount(cardsFilteredByIsPopular);
   } else {
@@ -85,13 +85,13 @@ export const filterCardsByIsPopular = (cardsArr: Array<Element>) => {
 
 export const filterCardsByColors = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
-    '.layout-5-column .store-content__item',
+    '.layout-5-column .store-content__item'
   );
 
   const colorsButtons = document.querySelectorAll('.colors .button_color');
 
   const activeColorsButtons = document.querySelectorAll(
-    '.colors .button_color.active',
+    '.colors .button_color.active'
   );
 
   if (activeColorsButtons.length !== 0) {
@@ -105,7 +105,7 @@ export const filterCardsByColors = (cardsArr: Array<Element>) => {
       if (colorsButton.classList.contains('active')) {
         cardsArr.forEach((card) => {
           const colorProp = (card.querySelector(
-            '.color-prop',
+            '.color-prop'
           ) as HTMLDivElement).innerText;
           if ((colorsButton as HTMLDivElement).innerText === colorProp) {
             card.classList.remove('store-content__item_hidden');
@@ -115,7 +115,7 @@ export const filterCardsByColors = (cardsArr: Array<Element>) => {
     });
 
     const cardsFilteredByColors = Array.from(cards).filter(
-      (card) => !card.classList.contains('store-content__item_hidden'),
+      (card) => !card.classList.contains('store-content__item_hidden')
     );
     filterCardsByIsPopular(cardsFilteredByColors);
   } else {
@@ -125,15 +125,15 @@ export const filterCardsByColors = (cardsArr: Array<Element>) => {
 
 export const filterCardsByCameras = (cardsArr: Array<Element>) => {
   const cards = document.querySelectorAll(
-    '.layout-5-column .store-content__item',
+    '.layout-5-column .store-content__item'
   );
 
   const camerasButtons = document.querySelectorAll(
-    '.camera-amount .button_camera',
+    '.camera-amount .button_camera'
   );
 
   const activeCameraButtons = document.querySelectorAll(
-    '.camera-amount .button_camera.active',
+    '.camera-amount .button_camera.active'
   );
 
   if (activeCameraButtons.length !== 0) {
@@ -147,7 +147,7 @@ export const filterCardsByCameras = (cardsArr: Array<Element>) => {
       if (cameraButton.classList.contains('active')) {
         cardsArr.forEach((card) => {
           const cameraProp = (card.querySelector(
-            '.camera-prop',
+            '.camera-prop'
           ) as HTMLDivElement).innerText;
           if ((cameraButton as HTMLDivElement).innerText === cameraProp) {
             card.classList.remove('store-content__item_hidden');
@@ -157,7 +157,7 @@ export const filterCardsByCameras = (cardsArr: Array<Element>) => {
     });
 
     const cardsFilteredByCameras = Array.from(cards).filter(
-      (card) => !card.classList.contains('store-content__item_hidden'),
+      (card) => !card.classList.contains('store-content__item_hidden')
     );
     filterCardsByColors(cardsFilteredByCameras);
   } else {
@@ -167,14 +167,14 @@ export const filterCardsByCameras = (cardsArr: Array<Element>) => {
 
 export const filterCardsByManufacturer = () => {
   const cards = document.querySelectorAll(
-    '.layout-5-column .store-content__item',
+    '.layout-5-column .store-content__item'
   );
 
   const manufacturerButtons = document.querySelectorAll(
-    '.manufacturer-list .button_manufacturer',
+    '.manufacturer-list .button_manufacturer'
   );
   const activeManufacturerButtons = document.querySelectorAll(
-    '.manufacturer-list .button_manufacturer.active',
+    '.manufacturer-list .button_manufacturer.active'
   );
 
   if (activeManufacturerButtons.length !== 0) {
@@ -186,7 +186,7 @@ export const filterCardsByManufacturer = () => {
       if (manufacturerButton.classList.contains('active')) {
         cards.forEach((card) => {
           const manufacturerProp = (card.querySelector(
-            '.manufacturer-prop',
+            '.manufacturer-prop'
           ) as HTMLDivElement).innerText;
           if (
             (manufacturerButton as HTMLDivElement).innerText ===
@@ -199,7 +199,7 @@ export const filterCardsByManufacturer = () => {
     });
 
     const cardsFilteredByManufacturer = Array.from(cards).filter(
-      (card) => !card.classList.contains('store-content__item_hidden'),
+      (card) => !card.classList.contains('store-content__item_hidden')
     );
 
     filterCardsByCameras(cardsFilteredByManufacturer);

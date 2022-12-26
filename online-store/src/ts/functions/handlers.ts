@@ -1,7 +1,7 @@
-import { VALUES_FOR_LOCAL_STORAGE } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from '../../store/data';
 import { filterCardsByManufacturer } from './filters';
-import { selectClickedCard } from './generateCards';
-import { generateBasketModal } from './generateModalWindows';
+import { selectClickedCard } from '../card/generateCards';
+import { generateBasketModal } from '../modalWindows/generateModalWindows';
 import {
   selectClickedCameraFilter,
   selectClickedColorFilter,
@@ -53,7 +53,7 @@ export const addSortHandler = () => {
       VALUES_FOR_LOCAL_STORAGE.sortingScheme = (this as HTMLSelectElement).value;
       filterCardsByManufacturer();
     },
-    false,
+    false
   );
 };
 
@@ -61,7 +61,7 @@ export const addCardClickHandler = () => {
   document.querySelectorAll('.store-content__item').forEach((item) => {
     item?.addEventListener('click', (e) => {
       const clickedCards = document.querySelectorAll(
-        '.store-content__item.active',
+        '.store-content__item.active'
       );
       const clickedCard = e.currentTarget;
       if (

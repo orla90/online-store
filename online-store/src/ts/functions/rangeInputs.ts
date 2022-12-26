@@ -1,10 +1,11 @@
-import { VALUES_FOR_LOCAL_STORAGE } from './data';
+import { VALUES_DEFAULT, VALUES_FOR_LOCAL_STORAGE } from '../../store/data';
 import { filterCardsByManufacturer } from './filters';
 
 export const getAmountRangeValues = () => {
   const rangeInput = document.querySelectorAll('.amount-range-input input');
   const amountValuesDiff =
-    +rangeInput[0].getAttribute('max')! - +rangeInput[0].getAttribute('min')!;
+    +VALUES_DEFAULT.rangeSettings.amount[1] -
+    +VALUES_DEFAULT.rangeSettings.amount[0];
 
   const amountInput = document.querySelectorAll(
     '.store-content__amount-numbers'
@@ -22,8 +23,6 @@ export const getAmountRangeValues = () => {
     input.addEventListener('input', (e: Event) => {
       const minValue = parseInt((rangeInput[0] as HTMLInputElement).value),
         maxValue = parseInt((rangeInput[1] as HTMLInputElement).value);
-
-      console.log(minValue);
 
       if (maxValue - minValue < amountGap) {
         if ((<HTMLTextAreaElement>e.target).className === 'amount-range-min') {
@@ -69,13 +68,16 @@ export const getAmountRangeValues = () => {
 
 export const getYearRangeValues = () => {
   const rangeInput = document.querySelectorAll('.year-range-input input');
-  const yearValuesDiff =
-    +rangeInput[0].getAttribute('max')! - +rangeInput[0].getAttribute('min')!;
   const yearInput = document.querySelectorAll('.store-content__year-numbers');
   const progress = document.querySelector('.year-slider .year-progress');
   const minValueBox = document.querySelector('.year-slider .year-value_min');
   const maxValueBox = document.querySelector('.year-slider .year-value_max');
   const amountGap = 1;
+  const startYear = +VALUES_DEFAULT.rangeSettings.year[0];
+  const yearGap =
+    +VALUES_DEFAULT.rangeSettings.year[1] -
+    +VALUES_DEFAULT.rangeSettings.year[0];
+
   rangeInput.forEach((input) => {
     input.addEventListener('input', (e: Event) => {
       const minValue = parseInt((rangeInput[0] as HTMLInputElement).value),
@@ -100,18 +102,18 @@ export const getYearRangeValues = () => {
         VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[1] = maxValue.toString();
 
         (progress as HTMLDivElement).style.left = `${Math.trunc(
-          ((minValue - 2000) * 100) / yearValuesDiff
+          ((minValue - startYear) * 100) / yearGap
         )}%`;
         (minValueBox as HTMLDivElement).style.left = `${Math.trunc(
-          ((minValue - 2000) * 100) / yearValuesDiff
+          ((minValue - startYear) * 100) / yearGap
         )}%`;
         (minValueBox as HTMLDivElement).innerHTML = minValue.toString();
 
         (progress as HTMLDivElement).style.right = `${
-          100 - Math.trunc(((maxValue - 2000) * 100) / yearValuesDiff)
+          100 - Math.trunc(((maxValue - startYear) * 100) / yearGap)
         }%`;
         (maxValueBox as HTMLDivElement).style.left = `${Math.trunc(
-          ((maxValue - 2000) * 100) / yearValuesDiff
+          ((maxValue - startYear) * 100) / yearGap
         )}%`;
         (maxValueBox as HTMLDivElement).innerHTML = maxValue.toString();
         filterCardsByManufacturer();

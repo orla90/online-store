@@ -1,23 +1,11 @@
 /* eslint-disable max-lines-per-function */
-import { VALUES_FOR_LOCAL_STORAGE, VALUES_FROM_LOCAL_STORAGE } from './data';
+import {
+  VALUES_DEFAULT,
+  VALUES_FOR_LOCAL_STORAGE,
+  VALUES_FROM_LOCAL_STORAGE,
+} from '../../store/data';
 
-export const addActiveClass = () => {
-  VALUES_FOR_LOCAL_STORAGE.activeCards = VALUES_FROM_LOCAL_STORAGE.activeCards;
-  const manufacturers = document.querySelectorAll('.manufacturer-list .button');
-  const cameras = document.querySelectorAll('.camera-amount .button');
-  const colors = document.querySelectorAll('.colors .button');
-  const popularInput = document.querySelector('#popular-input');
-  const amountInput = document.querySelectorAll(
-    '.store-content__amount-numbers'
-  );
-  const progress = document.querySelector('.amount-slider .amount-progress');
-  const minValueBox = document.querySelector(
-    '.amount-slider .amount-value_min'
-  );
-  const maxValueBox = document.querySelector(
-    '.amount-slider .amount-value_max'
-  );
-
+const handleYearInput = () => {
   const yearInput = document.querySelectorAll('.store-content__year-numbers');
   const progressYear = document.querySelector('.year-slider .year-progress');
   const minValueBoxYear = document.querySelector(
@@ -26,6 +14,10 @@ export const addActiveClass = () => {
   const maxValueBoxYear = document.querySelector(
     '.year-slider .year-value_max'
   );
+  const startYear = +VALUES_DEFAULT.rangeSettings.year[0];
+  const yearGap =
+    +VALUES_DEFAULT.rangeSettings.year[1] -
+    +VALUES_DEFAULT.rangeSettings.year[0];
 
   yearInput[0].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0].toString();
   yearInput[1].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1].toString();
@@ -37,34 +29,49 @@ export const addActiveClass = () => {
   )[0] as HTMLInputElement).value = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1].toString();
 
   (progressYear as HTMLDivElement).style.left = `${Math.trunc(
-    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - 2000) * 100) / 22
+    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - startYear) * 100) /
+      yearGap
   )}%`;
 
   (minValueBoxYear as HTMLDivElement).style.left = `${Math.trunc(
-    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - 2000) * 100) / 22
+    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0] - startYear) * 100) /
+      yearGap
   )}%`;
-
   (minValueBoxYear as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0].toString();
 
   (progressYear as HTMLDivElement).style.right = `${
     100 -
     Math.trunc(
-      ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - 2000) * 100) / 22
+      ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - startYear) * 100) /
+        yearGap
     )
   }%`;
 
   (maxValueBoxYear as HTMLDivElement).style.left = `${Math.trunc(
-    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - 2000) * 100) / 22
+    ((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1] - startYear) * 100) /
+      yearGap
   )}%`;
   (maxValueBoxYear as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1].toString();
   VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[0] =
     VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[0];
   VALUES_FOR_LOCAL_STORAGE.rangeSettings.year[1] =
     VALUES_FROM_LOCAL_STORAGE.rangeSettings.year[1];
+};
 
-  if (VALUES_FROM_LOCAL_STORAGE.filterSettings.isPopular === 'true') {
-    (popularInput as HTMLInputElement).checked = true;
-  }
+const handleAmountInput = () => {
+  const amountInput = document.querySelectorAll(
+    '.store-content__amount-numbers'
+  );
+  const progress = document.querySelector('.amount-slider .amount-progress');
+  const minValueBox = document.querySelector(
+    '.amount-slider .amount-value_min'
+  );
+  const maxValueBox = document.querySelector(
+    '.amount-slider .amount-value_max'
+  );
+  const amountGap =
+    +VALUES_DEFAULT.rangeSettings.amount[1] -
+    +VALUES_DEFAULT.rangeSettings.amount[0];
 
   amountInput[0].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0].toString();
   amountInput[1].innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1].toString();
@@ -76,27 +83,32 @@ export const addActiveClass = () => {
   )[0] as HTMLInputElement).value = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1].toString();
 
   (progress as HTMLDivElement).style.left = `${Math.trunc(
-    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / 20
+    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / amountGap
   )}%`;
 
   (minValueBox as HTMLDivElement).style.left = `${Math.trunc(
-    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / 20
+    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0] * 100) / amountGap
   )}%`;
   (minValueBox as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0].toString();
   (progress as HTMLDivElement).style.right = `${
     100 -
-    Math.trunc((+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1] * 100) / 20)
+    Math.trunc(
+      (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1] * 100) / amountGap
+    )
   }%`;
 
   (maxValueBox as HTMLDivElement).style.left = `${Math.trunc(
-    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1] * 100) / 20
+    (+VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1] * 100) / amountGap
   )}%`;
   (maxValueBox as HTMLDivElement).innerHTML = VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1].toString();
   VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[0] =
     VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[0];
   VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[1] =
     VALUES_FROM_LOCAL_STORAGE.rangeSettings.amount[1];
+};
 
+const handleManufacturerFilter = () => {
+  const manufacturers = document.querySelectorAll('.manufacturer-list .button');
   for (let i = 0; i < manufacturers.length; i++) {
     for (
       let j = 0;
@@ -112,10 +124,13 @@ export const addActiveClass = () => {
       }
     }
   }
-
   VALUES_FOR_LOCAL_STORAGE.filterSettings.manufacturer = JSON.parse(
     JSON.stringify(VALUES_FROM_LOCAL_STORAGE.filterSettings.manufacturer)
   ) as Array<string>;
+};
+
+const handleCamerasFilter = () => {
+  const cameras = document.querySelectorAll('.camera-amount .button');
 
   for (let i = 0; i < cameras.length; i++) {
     for (
@@ -129,11 +144,20 @@ export const addActiveClass = () => {
       }
     }
   }
-
   VALUES_FOR_LOCAL_STORAGE.filterSettings.cameras = JSON.parse(
     JSON.stringify(VALUES_FROM_LOCAL_STORAGE.filterSettings.cameras)
   ) as Array<string>;
+};
 
+const handlePopularFilter = () => {
+  const popularInput = document.querySelector('#popular-input');
+  if (VALUES_FROM_LOCAL_STORAGE.filterSettings.isPopular === 'true') {
+    (popularInput as HTMLInputElement).checked = true;
+  }
+};
+
+const handleColorsFilter = () => {
+  const colors = document.querySelectorAll('.colors .button');
   for (let i = 0; i < colors.length; i++) {
     for (
       let j = 0;
@@ -149,17 +173,21 @@ export const addActiveClass = () => {
       }
     }
   }
+  VALUES_FOR_LOCAL_STORAGE.filterSettings.colors =
+    VALUES_FROM_LOCAL_STORAGE.filterSettings.colors;
+};
 
+const handleSort = () => {
   const sortOptions = document.getElementById('sort');
   (sortOptions as HTMLSelectElement).value =
     VALUES_FROM_LOCAL_STORAGE.sortingScheme;
 
   VALUES_FOR_LOCAL_STORAGE.sortingScheme =
     VALUES_FROM_LOCAL_STORAGE.sortingScheme;
+};
 
-  VALUES_FOR_LOCAL_STORAGE.filterSettings.colors =
-    VALUES_FROM_LOCAL_STORAGE.filterSettings.colors;
-
+const handleCardsInBasket = () => {
+  VALUES_FOR_LOCAL_STORAGE.activeCards = VALUES_FROM_LOCAL_STORAGE.activeCards;
   const cards = document.querySelectorAll(
     '.layout-5-column .store-content__item'
   );
@@ -170,4 +198,15 @@ export const addActiveClass = () => {
       }
     });
   });
+};
+
+export const addActiveClass = () => {
+  handleYearInput();
+  handleAmountInput();
+  handlePopularFilter();
+  handleManufacturerFilter();
+  handleCamerasFilter();
+  handleColorsFilter();
+  handleSort();
+  handleCardsInBasket();
 };

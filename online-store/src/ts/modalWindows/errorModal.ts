@@ -1,10 +1,10 @@
-import { ErrorData } from './Interface';
+import { ErrorData } from '../interfaces/Interface';
 import { Modal } from './modal';
 
 export class ErrorModal extends Modal implements ErrorData {
   constructor(
     classes: string,
-    { urlToImg, text }: { urlToImg: string; text: string },
+    { urlToImg, text }: { urlToImg: string; text: string }
   ) {
     super(classes);
     this.urlToImg = urlToImg;

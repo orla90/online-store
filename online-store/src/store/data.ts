@@ -1,17 +1,17 @@
-import { StorageData } from './Interface';
+import { StorageData } from "../ts/interfaces/Interface";
 
 export const VALUES_DEFAULT = {
   filterSettings: {
     manufacturer: [],
     cameras: [],
     colors: [],
-    isPopular: 'false',
+    isPopular: "false",
   },
   rangeSettings: {
-    amount: ['0', '20'],
-    year: ['2000', '2022'],
+    amount: ["0", "20"],
+    year: ["2000", "2022"],
   },
-  sortingScheme: 'sort-by-name-desc',
+  sortingScheme: "sort-by-name-desc",
   activeCards: [],
 };
 

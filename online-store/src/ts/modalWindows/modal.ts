@@ -1,4 +1,4 @@
-import { ModalDataType, ModalData } from './Interface';
+import { ModalDataType, ModalData } from '../interfaces/Interface';
 
 export class Modal implements ModalData {
   classes: string;
@@ -24,7 +24,7 @@ export class Modal implements ModalData {
       this.overlay,
       'div',
       'overlay',
-      'overlay_modal',
+      'overlay_modal'
     );
 
     this.modal = this.createDomNode(this.modal, 'div', 'modal', this.classes);
@@ -32,13 +32,13 @@ export class Modal implements ModalData {
     this.modalContent = this.createDomNode(
       this.modalContent,
       'div',
-      'modal__content',
+      'modal__content'
     );
 
     this.modalCloseBtn = this.createDomNode(
       this.modalCloseBtn,
       'span',
-      'modal__close-icon',
+      'modal__close-icon'
     );
 
     this.setContent(content);
@@ -77,10 +77,10 @@ export class Modal implements ModalData {
 
   bindEvents() {
     (this.modalCloseBtn as HTMLDivElement).addEventListener('click', (e) =>
-      this.closeModal(e),
+      this.closeModal(e)
     );
     (this.overlay as HTMLDivElement).addEventListener('click', (e) =>
-      this.closeModal(e),
+      this.closeModal(e)
     );
   }
 
@@ -89,7 +89,7 @@ export class Modal implements ModalData {
   }
 
   closeModal(e: Event) {
-    const classes = (e.target! as HTMLDivElement).classList;
+    const classes = (e.target as HTMLDivElement).classList;
     if (classes.contains('overlay') || classes.contains('modal__close-icon')) {
       document.querySelector('.overlay')?.remove();
     }

@@ -1,4 +1,4 @@
-import { VALUES_DEFAULT, VALUES_FOR_LOCAL_STORAGE } from './data';
+import { VALUES_DEFAULT, VALUES_FOR_LOCAL_STORAGE } from '../../store/data';
 
 const resetValues = () => {
   VALUES_FOR_LOCAL_STORAGE.rangeSettings.amount[0] =

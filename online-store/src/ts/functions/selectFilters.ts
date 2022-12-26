@@ -1,11 +1,11 @@
-import { VALUES_FOR_LOCAL_STORAGE } from './data';
+import { VALUES_FOR_LOCAL_STORAGE } from '../../store/data';
 import { filterCardsByManufacturer } from './filters';
 
 export const selectClickedManufacturerFilter = (
-  clickedManufacturerFilter: EventTarget | null,
+  clickedManufacturerFilter: EventTarget | null
 ) => {
   const manufacturer = (clickedManufacturerFilter as HTMLDivElement).getAttribute(
-    'data-manufacturer',
+    'data-manufacturer'
   );
 
   if (
@@ -14,7 +14,7 @@ export const selectClickedManufacturerFilter = (
     (clickedManufacturerFilter as HTMLDivElement).classList.remove('active');
     if (manufacturer)
       VALUES_FOR_LOCAL_STORAGE.filterSettings.manufacturer = VALUES_FOR_LOCAL_STORAGE.filterSettings.manufacturer.filter(
-        (el) => el !== manufacturer,
+        (el) => el !== manufacturer
       );
   } else {
     (clickedManufacturerFilter as HTMLDivElement).classList.add('active');
@@ -25,16 +25,16 @@ export const selectClickedManufacturerFilter = (
 };
 
 export const selectClickedCameraFilter = (
-  clickedCameraFilter: EventTarget | null,
+  clickedCameraFilter: EventTarget | null
 ) => {
   const camera = (clickedCameraFilter as HTMLDivElement).getAttribute(
-    'data-camera',
+    'data-camera'
   );
   if ((clickedCameraFilter as HTMLDivElement).classList.contains('active')) {
     (clickedCameraFilter as HTMLDivElement).classList.remove('active');
     if (camera)
       VALUES_FOR_LOCAL_STORAGE.filterSettings.cameras = VALUES_FOR_LOCAL_STORAGE.filterSettings.cameras.filter(
-        (el) => el !== camera,
+        (el) => el !== camera
       );
   } else {
     (clickedCameraFilter as HTMLDivElement).classList.add('active');
@@ -44,16 +44,16 @@ export const selectClickedCameraFilter = (
 };
 
 export const selectClickedColorFilter = (
-  clickedColorFilter: EventTarget | null,
+  clickedColorFilter: EventTarget | null
 ) => {
   const color = (clickedColorFilter as HTMLDivElement).getAttribute(
-    'data-color',
+    'data-color'
   );
   if ((clickedColorFilter as HTMLDivElement).classList.contains('active')) {
     (clickedColorFilter as HTMLDivElement).classList.remove('active');
     if (color)
       VALUES_FOR_LOCAL_STORAGE.filterSettings.colors = VALUES_FOR_LOCAL_STORAGE.filterSettings.colors.filter(
-        (el) => el !== color,
+        (el) => el !== color
       );
   } else {
     (clickedColorFilter as HTMLDivElement).classList.add('active');

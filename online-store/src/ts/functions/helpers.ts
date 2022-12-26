@@ -14,7 +14,7 @@ type CardOnlyKeys = keyof CardStringValues;
 export const filterCardsByYear = (
   cardsArr: Card[],
   minYearVal: string,
-  maxYearVal: string,
+  maxYearVal: string
 ) => {
   const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
@@ -31,7 +31,7 @@ export const filterCardsByYear = (
 export const filterCardsByAmount = (
   cardsArr: Card[],
   minAmountVal: string,
-  maxAmountVal: string,
+  maxAmountVal: string
 ) => {
   const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
@@ -71,7 +71,7 @@ export const filterCardsByCameras = (cardsArr: Card[], camera: string) => {
 
 export const filterCardsByManufacturer = (
   cardsArr: Card[],
-  manufacturer: string,
+  manufacturer: string
 ) => {
   const arr: Array<Card> = [];
   cardsArr.forEach((card) => {
@@ -82,9 +82,9 @@ export const filterCardsByManufacturer = (
 
 export const sortNumbersAsc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (+a[`${attr}`]! > +b[`${attr}`]!) {
+    if (+a[`${attr}`] > +b[`${attr}`]) {
       return 1;
-    } else if (+a[`${attr}`]! < +b[`${attr}`]!) {
+    } else if (+a[`${attr}`] < +b[`${attr}`]) {
       return -1;
     } else {
       return 0;
@@ -95,9 +95,9 @@ export const sortNumbersAsc = (cardsArr: Card[], attr: CardOnlyKeys) => {
 
 export const sortNumbersDesc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (+a[`${attr}`]! > +b[`${attr}`]!) {
+    if (+a[`${attr}`] > +b[`${attr}`]) {
       return -1;
-    } else if (+a[`${attr}`]! < +b[`${attr}`]!) {
+    } else if (+a[`${attr}`] < +b[`${attr}`]) {
       return 1;
     } else {
       return 0;
@@ -108,9 +108,9 @@ export const sortNumbersDesc = (cardsArr: Card[], attr: CardOnlyKeys) => {
 
 export const sortStringAsc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (a[`${attr}`]! > b[`${attr}`]!) {
+    if (a[`${attr}`] > b[`${attr}`]) {
       return 1;
-    } else if (a[`${attr}`]! < b[`${attr}`]!) {
+    } else if (a[`${attr}`] < b[`${attr}`]) {
       return -1;
     } else {
       return 0;
@@ -121,9 +121,9 @@ export const sortStringAsc = (cardsArr: Card[], attr: CardOnlyKeys) => {
 
 export const sortStringDesc = (cardsArr: Card[], attr: CardOnlyKeys) => {
   cardsArr.sort((a, b) => {
-    if (a[`${attr}`]! > b[`${attr}`]!) {
+    if (a[`${attr}`] > b[`${attr}`]) {
       return -1;
-    } else if (a[`${attr}`]! < b[`${attr}`]!) {
+    } else if (a[`${attr}`] < b[`${attr}`]) {
       return 1;
     } else {
       return 0;

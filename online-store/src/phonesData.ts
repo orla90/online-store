@@ -1,10 +1,10 @@
-import { CardData } from './Interface';
+import { CardData } from './ts/interfaces/Interface';
 
-export const phonesData: CardData[] = [
+export const PHONES_DATA: CardData[] = [
   {
     id: '1',
     title: 'Xiaomi Redmi Note 11',
-    urlToImg: '../assets/phones/5.png',
+    urlToImg: './assets/phones/5.png',
     amount: 4,
     year: 2012,
     manufacturer: 'Xiaomi',
@@ -15,7 +15,7 @@ export const phonesData: CardData[] = [
   {
     id: '2',
     title: 'Xiaomi Redmi 9C 3/64gb',
-    urlToImg: '../assets/phones/6.png',
+    urlToImg: './assets/phones/6.png',
     amount: 6,
     year: 2010,
     manufacturer: 'Xiaomi',
@@ -26,7 +26,7 @@ export const phonesData: CardData[] = [
   {
     id: '3',
     title: 'Xiaomi Poco X4 pro1',
-    urlToImg: '../assets/phones/4.png',
+    urlToImg: './assets/phones/4.png',
     amount: 1,
     year: 2014,
     manufacturer: 'Xiaomi',
@@ -37,7 +37,7 @@ export const phonesData: CardData[] = [
   {
     id: '4',
     title: 'Samsung Galaxy S21',
-    urlToImg: '../assets/phones/1.png',
+    urlToImg: './assets/phones/1.png',
     amount: 2,
     year: 2019,
     manufacturer: 'Samsung',
@@ -48,7 +48,7 @@ export const phonesData: CardData[] = [
   {
     id: '5',
     title: 'Samsung Galaxy S20',
-    urlToImg: '../assets/phones/3.png',
+    urlToImg: './assets/phones/3.png',
     amount: 3,
     year: 2022,
     manufacturer: 'Samsung',
@@ -59,7 +59,7 @@ export const phonesData: CardData[] = [
   {
     id: '6',
     title: 'Samsung Galaxy A03',
-    urlToImg: '../assets/phones/2.png',
+    urlToImg: './assets/phones/2.png',
     amount: 5,
     year: 2000,
     manufacturer: 'Samsung',
@@ -70,7 +70,7 @@ export const phonesData: CardData[] = [
   {
     id: '7',
     title: 'Apple iPhone SE',
-    urlToImg: '../assets/phones/10.png',
+    urlToImg: './assets/phones/10.png',
     amount: 7,
     year: 2004,
     manufacturer: 'Apple',
@@ -81,7 +81,7 @@ export const phonesData: CardData[] = [
   {
     id: '8',
     title: 'Apple iPhone 13',
-    urlToImg: '../assets/phones/8.png',
+    urlToImg: './assets/phones/8.png',
     amount: 10,
     year: 2009,
     manufacturer: 'Apple',
@@ -92,7 +92,7 @@ export const phonesData: CardData[] = [
   {
     id: '9',
     title: 'Apple iPhone 12',
-    urlToImg: '../assets/phones/9.png',
+    urlToImg: './assets/phones/9.png',
     amount: 2,
     year: 2010,
     manufacturer: 'Apple',
@@ -103,7 +103,7 @@ export const phonesData: CardData[] = [
   {
     id: '10',
     title: 'Apple iPhone 11',
-    urlToImg: '../assets/phones/7.png',
+    urlToImg: './assets/phones/7.png',
     amount: 12,
     year: 2018,
     manufacturer: 'Apple',
@@ -114,7 +114,7 @@ export const phonesData: CardData[] = [
   {
     id: '11',
     title: 'Apple iPhone 13',
-    urlToImg: '../assets/phones/11.png',
+    urlToImg: './assets/phones/11.png',
     amount: 10,
     year: 2021,
     manufacturer: 'Apple',
@@ -125,7 +125,7 @@ export const phonesData: CardData[] = [
   {
     id: '12',
     title: 'Apple iPhone 12 mini',
-    urlToImg: '../assets/phones/12.png',
+    urlToImg: './assets/phones/12.png',
     amount: 1,
     year: 2020,
     manufacturer: 'Apple',
@@ -136,7 +136,7 @@ export const phonesData: CardData[] = [
   {
     id: '13',
     title: 'Apple iPhone 13 Pro Max',
-    urlToImg: '../assets/phones/13.png',
+    urlToImg: './assets/phones/13.png',
     amount: 7,
     year: 2021,
     manufacturer: 'Apple',
@@ -147,7 +147,7 @@ export const phonesData: CardData[] = [
   {
     id: '14',
     title: 'Apple iPhone XS',
-    urlToImg: '../assets/phones/14.png',
+    urlToImg: './assets/phones/14.png',
     amount: 7,
     year: 2020,
     manufacturer: 'Apple',
@@ -158,7 +158,7 @@ export const phonesData: CardData[] = [
   {
     id: '15',
     title: 'Xiaomi 12 Lite',
-    urlToImg: '../assets/phones/15.png',
+    urlToImg: './assets/phones/15.png',
     amount: 2,
     year: 2022,
     manufacturer: 'Xiaomi',
@@ -169,7 +169,7 @@ export const phonesData: CardData[] = [
   {
     id: '16',
     title: 'Xiaomi Redmi 10',
-    urlToImg: '../assets/phones/16.png',
+    urlToImg: './assets/phones/16.png',
     amount: 4,
     year: 2022,
     manufacturer: 'Xiaomi',
@@ -180,7 +180,7 @@ export const phonesData: CardData[] = [
   {
     id: '17',
     title: 'Xiaomi 11 Lite',
-    urlToImg: '../assets/phones/17.png',
+    urlToImg: './assets/phones/17.png',
     amount: 6,
     year: 2021,
     manufacturer: 'Xiaomi',
@@ -191,7 +191,7 @@ export const phonesData: CardData[] = [
   {
     id: '18',
     title: 'Samsung Galaxy S22+',
-    urlToImg: '../assets/phones/18.png',
+    urlToImg: './assets/phones/18.png',
     amount: 20,
     year: 2022,
     manufacturer: 'Samsung',
@@ -202,7 +202,7 @@ export const phonesData: CardData[] = [
   {
     id: '19',
     title: 'Samsung Galaxy A33',
-    urlToImg: '../assets/phones/19.png',
+    urlToImg: './assets/phones/19.png',
     amount: 17,
     year: 2022,
     manufacturer: 'Samsung',
@@ -213,7 +213,7 @@ export const phonesData: CardData[] = [
   {
     id: '20',
     title: 'Samsung Galaxy S22',
-    urlToImg: '../assets/phones/20.png',
+    urlToImg: './assets/phones/20.png',
     amount: 3,
     year: 2022,
     manufacturer: 'Samsung',
@@ -224,7 +224,7 @@ export const phonesData: CardData[] = [
   {
     id: '21',
     title: 'Samsung Galaxy S22 Ultra',
-    urlToImg: '../assets/phones/21.png',
+    urlToImg: './assets/phones/21.png',
     amount: 3,
     year: 2022,
     manufacturer: 'Samsung',
@@ -235,7 +235,7 @@ export const phonesData: CardData[] = [
   {
     id: '22',
     title: 'Realme 9i',
-    urlToImg: '../assets/phones/22.png',
+    urlToImg: './assets/phones/22.png',
     amount: 9,
     year: 2022,
     manufacturer: 'Realme',
@@ -246,7 +246,7 @@ export const phonesData: CardData[] = [
   {
     id: '23',
     title: 'Realme 8i',
-    urlToImg: '../assets/phones/23.png',
+    urlToImg: './assets/phones/23.png',
     amount: 2,
     year: 2021,
     manufacturer: 'Realme',
@@ -257,7 +257,7 @@ export const phonesData: CardData[] = [
   {
     id: '24',
     title: 'Realme C25s',
-    urlToImg: '../assets/phones/24.png',
+    urlToImg: './assets/phones/24.png',
     amount: 14,
     year: 2021,
     manufacturer: 'Realme',
@@ -268,7 +268,7 @@ export const phonesData: CardData[] = [
   {
     id: '25',
     title: 'Realme 9 Pro',
-    urlToImg: '../assets/phones/25.png',
+    urlToImg: './assets/phones/25.png',
     amount: 18,
     year: 2022,
     manufacturer: 'Realme',

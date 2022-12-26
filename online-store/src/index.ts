@@ -1,9 +1,9 @@
-import { phonesData } from './ts/phonesData';
-import { VALUES_FROM_LOCAL_STORAGE } from './ts/data';
-import { addResetHandler, addResetSettingsHandler } from './ts/reset';
-import { setLocalStorage, getLocalStorage } from './ts/localStorage';
-import { addClearIconHandler, addSearchHandler } from './ts/search';
-import { filterCardsByManufacturer } from './ts/filters';
+import { PHONES_DATA } from './phonesData';
+import { VALUES_FROM_LOCAL_STORAGE } from './store/data';
+import { addResetHandler, addResetSettingsHandler } from './ts/LS/reset';
+import { setLocalStorage, getLocalStorage } from './ts/LS/localStorage';
+import { addClearIconHandler, addSearchHandler } from './ts/functions/search';
+import { filterCardsByManufacturer } from './ts/functions/filters';
 import {
   addCamerasClickHandler,
   addCardClickHandler,
@@ -11,9 +11,12 @@ import {
   addIsPopularClickHandler,
   addManufacturerClickHandler,
   addSortHandler,
-} from './ts/handlers';
-import { drawCardsCount, renderCardsToDom } from './ts/generateCards';
-import { getAmountRangeValues, getYearRangeValues } from './ts/rangeInputs';
+} from './ts/functions/handlers';
+import { drawCardsCount, renderCardsToDom } from './ts/card/generateCards';
+import {
+  getAmountRangeValues,
+  getYearRangeValues,
+} from './ts/functions/rangeInputs';
 
 const getValuesFromLocalStorage = () => {
   getLocalStorage();
@@ -28,7 +31,7 @@ const addWindowBeforeunloadHandler = () => {
 window.onload = function () {
   addWindowBeforeunloadHandler();
 
-  if (phonesData) {
+  if (PHONES_DATA) {
     renderCardsToDom();
   }
 
